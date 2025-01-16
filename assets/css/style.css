@@ -1,0 +1,14 @@
+.main-table {
+    display: flex;
+}
+
+.main-table div {
+    border: 3px solid green;
+    width: 30%;
+    height: 600px;
+    margin: 0.2em;
+}
+
+.todo-item {
+    list-style-type: none;
+}
