@@ -1,0 +1,84 @@
+:root {
+    --sand: #eadbd4;
+    --blue: #53aba9;
+    --dark: #2a5360;
+}
+
+
+body {
+    background-color: #eadbd4;
+}
+
+header {
+    padding: 5px 3% 5px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--sand);
+}
+
+.banner {
+    background-color: var(--dark);
+    text-align: center;
+    padding: 1px;
+    color:white;
+    
+}
+
+.big-banner {
+    background-image: url("../images/beachyheader.webp");
+    background-size: contain;
+    text-align: center;
+    padding: 30px;
+    color:white;
+    
+}
+
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: var(--sand);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px;
+    border-radius: 15%;
+    min-height: 100%;
+}
+
+.boxes section p {
+    color:white;
+    max-height: 30vh;
+
+}
+
+.card {
+    border-style: solid;
+    border-radius: 5%;
+    border-color: var(--dark);
+    background-color: var(--dark);
+    width: 1px;
+    padding: 5px;
+    flex: 0 0 400px;
+    overflow: hidden;
+    flex-basis: calc(20% - 40px);
+    margin: 20px;
+}
+
+.card header {
+    background-color: var(--dark);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    border: 1px;
+    border-radius: 15px 15px 0 0 ;
+
+}
+
+.card img {
+    width: 100%;
+}
