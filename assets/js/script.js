@@ -1,21 +1,5 @@
 const todos = [];
 
-// function createDropdown() {
-//     const statusDropdown = document.createElement('div');
-//     statusDropdown.setAttribute("class", "dropdown");
-//     statusDropdown.innerHTML = 
-//     `
-//         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-//             Status 
-//         </button>
-//         <ul class="dropdown-menu">
-//           <li id="not-started-btn"><a class="dropdown-item" href="#">Not Started</a></li>
-//           <li id="in-progress-btn"><a class="dropdown-item" href="#">In Progress</a></li>
-//           <li id="completed-btn"><a class="dropdown-item" href="#">Completed</a></li>
-//         </ul>
-//     `;
-// }
-
 // form submission
 document.getElementById("userForm").addEventListener("submit", function(event) {
     event.preventDefault();
@@ -27,9 +11,12 @@ document.getElementById("userForm").addEventListener("submit", function(event) {
     todos.push({ id: todoId, text: userInput, status: 'not-started' });
 
     // create new list item
-    const divTodo = document.createElement("div");
-    divTodo.textContent = userInput;
-    divTodo.setAttribute("id", `todo-item-${todoId}`)
+    const divTodo = document.createElement("li");
+    const inputText = document.createElement("p");
+    inputText.setAttribute("class", "todo-text");
+    inputText.textContent = userInput;
+    divTodo.setAttribute("id", `todo-item-${todoId}`);
+    divTodo.appendChild(inputText);
     divTodo.classList.add("todo-item");
     const statusDropdown = document.createElement("div");
     statusDropdown.setAttribute("class", "dropdown");
@@ -114,8 +101,13 @@ document.getElementById("userForm").addEventListener("submit", function(event) {
     // clear input field after submit
     document.getElementById("inputField").value = "";
 
-    //Store information in local storage?
+    //Store information in local storage
+    // localStorage.setItem('todos', JSON.stringify(todos));
+    // const fromLS = localStorage.getItem('todos');
+    // console.log('here', JSON.parse(fromLS));
 });
 
 // delete button
 // localStorage
+// modal - for the delete button
+// Rich suggested to make the user input as modal
