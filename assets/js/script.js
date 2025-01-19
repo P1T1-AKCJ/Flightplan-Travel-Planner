@@ -12,7 +12,7 @@ document.getElementById("userForm").addEventListener("submit", function(event) {
 
     // create new list item
     const divTodo = document.createElement("li");
-    const inputText = document.createElement("p");
+    const inputText = document.createElement("div");
     inputText.setAttribute("class", "todo-text");
     inputText.textContent = userInput;
     divTodo.setAttribute("id", `todo-item-${todoId}`);

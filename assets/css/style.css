@@ -11,7 +11,7 @@
 }
 
 body {
-    background-image: url("../images/pexels-asadphoto-457882.jpg");
+    background-image: url("../images/travel-layout.jpg");
     background-size: cover;
     padding: 20px;
     font-family: 'Arial', sans-serif;
@@ -59,10 +59,10 @@ nav a:hover {
     height: 600px;
     margin: 0.2em;
     border-radius: 15px;
-    background-color: white;
+    background-color: var(--darkblue);
 }
 
-.column ul {
+.column .todo-list {
     height: 536px;
     overflow-y: auto;
 }
@@ -73,6 +73,7 @@ nav a:hover {
     border: 3px;
     color: white;
     text-align: center;
+    padding: 0.1em;
 }
 
 form {
@@ -109,14 +110,19 @@ form input[type="submit"]:hover {
 .todo-item {
     display: flex;
     justify-content: space-between;
-    border: 2px solid var(--sand);
     width: 80%;
+    z-index: 1;
+    opacity: 1;
     margin-bottom: 0.5em;
 }
 
 .todo-text {
     font-size: 1.5em;
-    text-align: center;
+    background-color: var(--green);
+    width: 75%;
+    border-radius: 5px;
+    color: white;
+    padding: 0.2em;
 }
 
 .dropdown {
