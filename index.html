@@ -1,48 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href='./assets/css/style.css'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel Planner</title>
-</head>
 
-<body>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Bootstrap JS (with defer) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+
+    <!-- Main JS (with defer) -->
+    <script src="./assets/js/script.js" defer></script>
+  </head>
+
+  <body>
     <header>
-        <h1>Travel Planner</h1>
-        <nav>
-            <a href="about.html">About Us</a>
-            <a href="#">Contact</a>
-        </nav>
+      <h1>Travel Planner</h1>
+      <nav>
+        <a href="about.html">About Us</a>
+        <a href="#">Contact</a>
+      </nav>
     </header>
 
-    <main>      
-    <form id="userForm">
+    <main>
+      <form id="userForm">
         <label for="inputField">What's Next for Your Trip?</label>
-            <input type="text" id="inputField" name="inputField">
-            <input type="submit" value="Submit">
-    </form>
-    <section class="main-table">
+        <input type="text" id="inputField" name="inputField" />
+        <input type="submit" value="Submit" />
+      </form>
+
+      <section class="main-table">
         <!-- Not Yet Started -->
-        <div class="column">
-            <h3>Not Yet Started</h3>
-            <ul class="todo-list" id="not-started-column"></ul>
-        </div>
+        <article class="column">
+          <h3>Not Yet Started</h3>
+          <ul class="todo-list" id="not-started-column"></ul>
+        </article>
+
         <!-- In Progress -->
-        <div class="column">
-            <h3>In Progress</h3>
-            <ul class="todo-list" id="in-progress-column"></ul>
-        </div>
+        <article class="column">
+          <h3>In Progress</h3>
+          <ul class="todo-list" id="in-progress-column"></ul>
+        </article>
+
         <!-- Completed -->
-        <div class="column">
-            <h3>Completed</h3>
-            <ul class="todo-list" id="completed-column"></ul>
-            </div>
-        </section>
+        <article class="column">
+          <h3>Completed</h3>
+          <ul class="todo-list" id="completed-column"></ul>
+        </article>
+      </section>
     </main>
-    <script src='./assets/js/script.js'></script>
-</body>
+  </body>
 </html>
