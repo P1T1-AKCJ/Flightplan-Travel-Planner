@@ -8,44 +8,111 @@
     --sand: #eadbd4;
     --blue: #53aba9;
     --dark: #2a5360;
+
+ /* ----------------------------------------------------------- */
+ /* Jaden Variables */
+
+    --verylightgray: #fafafa;
+    --white: #ffffff;
+    --brightblue: #1778f0;
+    --lightgray: #dadce0;
+
 }
 
-body {
-    background-image: url("../images/travel-layout.jpg");
-    background-size: cover;
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
+ /* ----------------------------------------------------------- */
+
+ body {
+  background-color: #bfdeed;
+  font-family: 'Roboto', sans-serif;
 }
+
+/* ----------------------------------------------------------- */
 
 header {
-    color: var(--light);
-    opacity: 80%;
-    background-color: var(--darkblue);
-    padding: 20px 5% 20px 0;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    background-color: var(--white);
+    border-bottom: 2px solid var(--lightgray);
+    opacity: 85%;
+    padding: 1.5% 2%;
 }
 
-header h1 {
-    padding: 5px 1% 5px 6%;
+/* ----------------------------------------------------------- */
+
+.branding {
+    display: flex;
+    align-items: center;
+  }
+
+#brand-logo-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 5% 0 5px;
+  }
+
+#brand-logo {
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--brightblue);
+    font-size: 40px;
 }
 
-nav a {
+/* ----------------------------------------------------------- */
+
+form#userForm {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 0 75px 0 75px;
+  margin: 0;
+  width: auto;
+}
+
+form#userForm input[type="text"] {
+  flex: 1;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  background-color: #ecedef;
+  color: #333;
+  box-sizing: border-box;
+}
+
+  form#userForm input[type="text"]::placeholder {
+    color: #777;
+  }
+
+  form#userForm input[type="text"]:focus {
+    border-color: var(--brightblue);
+    background-color: #ffffff;
+  }
+/* ----------------------------------------------------------- */
+
+nav {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  nav a {
     text-decoration: none;
-    color: var(--light);
-    padding: 5px 10px;
+    color: var(--brightblue);
     font-size: 1.2rem;
-}
+  }
 
-nav a:hover {
-    background-color: var(--darkest);
-    border-color: var(--darkest) ;
-    border-width: 1px;
+  nav a:hover {
+    background-color: #def1ff;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-}
+  }
+
+/* ----------------------------------------------------------- */
 
 .main-table {
     display: flex;
@@ -54,12 +121,12 @@ nav a:hover {
 }
 
 .column {
-    border: 3px solid var(--green); 
+    border: 3px solid #dee8ee;
     width: 25%;
     height: 600px;
     margin: 0.2em;
     border-radius: 15px;
-    background-color: var(--darkblue);
+    background-color: #ffffff;
 }
 
 .column .todo-list {
@@ -68,43 +135,15 @@ nav a:hover {
 }
 
 .main-table h3 {
-    background-color: var(--green);
+    background-color:#e5f1f6;
     border-radius: 10px 10px 0 0;
     border: 3px;
-    color: white;
+    color: #2b2f32;
     text-align: center;
     padding: 0.1em;
-}
-
-form {
-    display: flex;
-    padding: 10px;
-    border: 1px solid lightseagreen;
-    border-radius: 5px;
-    background-color: rgb(241, 241, 241, 0.5);
-}
-
-form input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: var(--box-shadow); /* Subtle shadow */
-}
-
-form input[type="submit"] {
-    background-color: var(--green);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form input[type="submit"]:hover {
-    background-color: var(--darkblue);
-    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 3.5%;
 }
 
 .todo-item {
@@ -128,10 +167,78 @@ form input[type="submit"]:hover {
 .dropdown {
     font-size: 0.45em;
     align-self: center;
+}
 
-    .btn {
-        --bs-btn-padding-x: 0.5rem;
-        --bs-btn-padding-y: 0.25rem;
-        --bs-btn-font-size: 0.8rem;
-    }
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  min-width: 275px;
+}
+
+.input-wrapper input[type="text"] {
+  flex: 1;
+  padding: 12px 75px 12px 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  background-color: #e5e5e5;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.icon-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--brightblue); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-button:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+.icon-button .tooltip {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+form#userForm input[type="text"]:hover {
+  background-color: #dadce0;
+
+}
+
+form#userForm input[type="text"]:focus:hover {
+  background-color: #ffffff;
+}
+
+main {
+  margin: 15px;
+  /* background-image: url("../images/travel-layout.jpg"); */
+  /* background-size: cover; */
 }
