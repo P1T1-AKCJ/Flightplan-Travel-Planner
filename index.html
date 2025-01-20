@@ -31,14 +31,15 @@
 
   <body>
     <header>
-      <section class="branding">
+      <section class="brand-logo">
         <img
           src="assets/images/jaden-custom-grey-suitcase-icon.png"
-          id="brand-logo-icon"
+          id="brandLogoMark"
         />
-        <h1 id="brand-logo">Flightplan</h1>
+        <h1 id="brandLogoType">Flightplan</h1>
       </section>
-      <form id="userForm">
+
+      <form id="addTaskForm">
         <div class="input-wrapper">
           <input
             type="text"
@@ -46,6 +47,15 @@
             name="inputField"
             placeholder="What's Next for Your Trip?"
           />
+          <button
+            type="button"
+            id="clearButton"
+            class="clear-icon"
+            aria-label="Clear"
+          >
+            <span class="tooltip">Clear</span>
+            ✖
+          </button>
           <button type="submit" id="addTaskButton" class="icon-button">
             <img src="assets/images/google-plus-icon.svg" alt="Add Task" />
             <span class="tooltip">Add a Task</span>
@@ -54,28 +64,60 @@
       </form>
 
       <nav>
-        <a href="about.html">About Us</a>
-        <a href="#">Home</a>
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">
+            <img
+              src="assets/images/google-home-icon.svg"
+              alt="Home Icon"
+              class="nav-icon"
+            />
+            <span>Home</span>
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="about.html" class="nav-link">
+            <img
+              src="assets/images/google-info-icon.svg"
+              alt="Info Icon"
+              class="nav-icon"
+            />
+            <span>About</span>
+          </a>
+        </div>
       </nav>
     </header>
 
     <main>
       <section class="main-table">
-        <!-- Not Yet Started -->
+        <!-- Not Started -->
         <article class="column">
-          <h3>Not Yet Started</h3>
+          <h3 class="column-header not-started">
+            Not Started <span class="column-count">0</span>
+          </h3>
           <ul class="todo-list" id="not-started-column"></ul>
         </article>
 
-        <!-- In Progress -->
+        <!-- Working On It -->
         <article class="column">
-          <h3>In Progress</h3>
+          <h3 class="column-header working-on-it">
+            Working On It <span class="column-count">0</span>
+          </h3>
           <ul class="todo-list" id="in-progress-column"></ul>
         </article>
 
-        <!-- Completed -->
+        <!-- On Hold -->
         <article class="column">
-          <h3>Completed</h3>
+          <h3 class="column-header on-hold">
+            On Hold <span class="column-count">0</span>
+          </h3>
+          <ul class="todo-list" id="on-hold-column"></ul>
+        </article>
+
+        <!-- Done -->
+        <article class="column">
+          <h3 class="column-header done">
+            Done <span class="column-count">0</span>
+          </h3>
           <ul class="todo-list" id="completed-column"></ul>
         </article>
       </section>

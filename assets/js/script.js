@@ -2,7 +2,7 @@ const todos = [];
 
 // form submission
 document
-  .getElementById("userForm")
+  .getElementById("addTaskForm")
   .addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -28,9 +28,8 @@ document
     const statusDropdown = document.createElement("div");
     statusDropdown.setAttribute("class", "dropdown");
     statusDropdown.innerHTML = `
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Status
-        </button>
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      </button>
     `;
     divTodo.appendChild(statusDropdown);
 
@@ -55,9 +54,20 @@ document
     aInProgressBtn.setAttribute("id", todoId);
     aInProgressBtn.setAttribute("class", "dropdown-item");
     aInProgressBtn.setAttribute("href", "#");
-    aInProgressBtn.textContent = "In Progress";
+    aInProgressBtn.textContent = "Working On It";
     liInProgressBtn.appendChild(aInProgressBtn);
     ulDropdownMenu.appendChild(liInProgressBtn);
+
+    // Add "On Hold" Button
+    const liOnHoldBtn = document.createElement("li");
+    liOnHoldBtn.setAttribute("id", "on-hold-btn");
+    const aOnHoldBtn = document.createElement("a");
+    aOnHoldBtn.setAttribute("id", todoId);
+    aOnHoldBtn.setAttribute("class", "dropdown-item");
+    aOnHoldBtn.setAttribute("href", "#");
+    aOnHoldBtn.textContent = "On Hold";
+    liOnHoldBtn.appendChild(aOnHoldBtn);
+    ulDropdownMenu.appendChild(liOnHoldBtn);
 
     // creates Completed Btn
     const liCompletedBtn = document.createElement("li");
@@ -66,7 +76,7 @@ document
     aCompletedBtn.setAttribute("id", todoId);
     aCompletedBtn.setAttribute("class", "dropdown-item");
     aCompletedBtn.setAttribute("href", "#");
-    aCompletedBtn.textContent = "Completed";
+    aCompletedBtn.textContent = "Done";
     liCompletedBtn.appendChild(aCompletedBtn);
     ulDropdownMenu.appendChild(liCompletedBtn);
 
@@ -82,6 +92,7 @@ document
           `todo-item-${event.target.id}`
         );
         document.getElementById("not-started-column").appendChild(todoHTML);
+        updateCounts(); // call updateCounts to refresh the counts
       }
     });
     liInProgressBtn.addEventListener("click", function (event) {
@@ -93,7 +104,19 @@ document
           `todo-item-${event.target.id}`
         );
         document.getElementById("in-progress-column").appendChild(todoHTML);
+        updateCounts(); // call updateCounts to refresh the counts
       }
+    });
+    liOnHoldBtn.addEventListener("click", function (event) {
+      const todo = todos.find((el) => el.id === +event.target.id);
+      if (todo.status !== "on-hold") {
+        todo.status = "on-hold";
+        const todoHTML = document.getElementById(
+          `todo-item-${event.target.id}`
+        );
+        document.getElementById("on-hold-column").appendChild(todoHTML);
+      }
+      updateCounts(); // Update the counts after moving
     });
     liCompletedBtn.addEventListener("click", function (event) {
       console.log("trying to add evntLst in-progress", event.target.id);
@@ -104,6 +127,7 @@ document
           `todo-item-${event.target.id}`
         );
         document.getElementById("completed-column").appendChild(todoHTML);
+        updateCounts(); // call updateCounts to refresh the counts
       }
     });
 
@@ -112,6 +136,8 @@ document
 
     // clear input field after submit
     document.getElementById("inputField").value = "";
+
+    updateCounts(); // Update counts
 
     //Store information in local storage
     // localStorage.setItem('todos', JSON.stringify(todos));
@@ -123,3 +149,49 @@ document
 // localStorage
 // modal - for the delete button
 // Rich suggested to make the user input as modal
+// ---------------------------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
+  const inputField = document.getElementById("inputField");
+  const clearButton = document.getElementById("clearButton");
+
+  // show/hide the clear button based on input
+  inputField.addEventListener("input", function () {
+    if (inputField.value.trim() !== "") {
+      clearButton.style.display = "flex"; // show the clear button
+    } else {
+      clearButton.style.display = "none"; // hide the clear button
+    }
+  });
+
+  // clear the input field and hide the button when clicked
+  clearButton.addEventListener("click", function () {
+    inputField.value = "";
+    clearButton.style.display = "none";
+    inputField.focus(); // keep the focus on the input
+  });
+});
+
+function updateCounts() {
+  // get the count of tasks in each column
+  const notStartedCount = document.querySelectorAll(
+    "#not-started-column .todo-item"
+  ).length;
+  const inProgressCount = document.querySelectorAll(
+    "#in-progress-column .todo-item"
+  ).length;
+  const onHoldCount = document.querySelectorAll(
+    "#on-hold-column .todo-item"
+  ).length;
+  const completedCount = document.querySelectorAll(
+    "#completed-column .todo-item"
+  ).length;
+
+  // update the text content of the span elements with the class "column-count"
+  document.querySelector(".not-started .column-count").textContent =
+    notStartedCount;
+  document.querySelector(".working-on-it .column-count").textContent =
+    inProgressCount;
+  document.querySelector(".on-hold .column-count").textContent = onHoldCount;
+  document.querySelector(".done .column-count").textContent = completedCount;
+}
