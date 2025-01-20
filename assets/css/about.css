@@ -1,22 +1,68 @@
 :root {
     --sand: #eadbd4;
     --blue: #53aba9;
-    --dark: #2a5360;
+    --dark: #004080;
+    --verylightgray: #fafafa;
+    --white: #ffffff;
+    --brightblue: #1778f0;
+    --lightgray: #dadce0;
 }
 
 
 body {
-    background-color: #eadbd4;
+background-color: #bfdeed;
+  font-family: 'Roboto', sans-serif;
+  color: #1f1f1f;
 }
 
+.branding {
+    display: flex;
+    align-items: center;
+  }
+
+#brand-logo-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 5% 0 5px;
+  }
+
+#brand-logo {
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--brightblue);
+    font-size: 40px;
+}
+
+
 header {
-    padding: 5px 3% 5px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    background-color: var(--sand);
+    background-color: white;
+    border-width: 10px;
+    border-color: var(#bfdeed);
+}
+
+header h3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+    color: var(--brightblue);
+    font-size: 1.2rem;
+    font-weight: 400;
+   
+}
+
+.promo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .banner {
@@ -24,6 +70,8 @@ header {
     text-align: center;
     padding: 1px;
     color:white;
+    border-width: 10px;
+    border-color: var(#bfdeed);
     
 }
 
@@ -33,34 +81,30 @@ header {
     text-align: center;
     padding: 30px;
     color:white;
-    
+    font-family: "Pacifico", serif;
+    font-size: larger;
+    border-width: 10px;
+    border-color: var(#bfdeed);
 }
 
 .boxes {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    background-color: var(--sand);
-    padding: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     border: 1px;
-    border-radius: 15%;
+    border-radius: 10%;
     min-height: 100%;
 }
 
-.boxes section p {
-    color:white;
-    max-height: 30vh;
-
-}
 
 .card {
     border-style: solid;
     border-radius: 5%;
-    border-color: var(--dark);
-    background-color: var(--dark);
+    border-color: var(--white);
+    background-color: var(--white);
     width: 1px;
     padding: 5px;
     flex: 0 0 400px;
@@ -72,6 +116,7 @@ header {
 .card header {
     background-color: var(--dark);
     color: white;
+    font-family: "Pacifico", serif;
     text-align: center;
     justify-content: center;
     border: 1px;
@@ -79,6 +124,16 @@ header {
 
 }
 
+.card p {
+    color: var(--dark);
+    text-align: center;
+    font-weight: 600;
+}
 .card img {
     width: 100%;
+}
+
+.boxes :hover {
+    box-shadow: 2px 2px 5px var(--dark);
+
 }
