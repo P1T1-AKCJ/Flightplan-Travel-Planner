@@ -1,14 +1,21 @@
 const todos = [];
 
 // form submission
-document.getElementById("userForm").addEventListener("submit", function(event) {
+document
+  .getElementById("userForm")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
 
     // get user input
     let userInput = document.getElementById("inputField").value;
 
+    // validate user input: do nothing if empty
+    if (userInput === "") {
+      return;
+    }
+
     const todoId = todos.length + 1;
-    todos.push({ id: todoId, text: userInput, status: 'not-started' });
+    todos.push({ id: todoId, text: userInput, status: "not-started" });
 
     // create new list item
     const divTodo = document.createElement("li");
@@ -20,10 +27,9 @@ document.getElementById("userForm").addEventListener("submit", function(event) {
     divTodo.classList.add("todo-item");
     const statusDropdown = document.createElement("div");
     statusDropdown.setAttribute("class", "dropdown");
-    statusDropdown.innerHTML = 
-    `
+    statusDropdown.innerHTML = `
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Status 
+            Status
         </button>
     `;
     divTodo.appendChild(statusDropdown);
@@ -67,32 +73,38 @@ document.getElementById("userForm").addEventListener("submit", function(event) {
     statusDropdown.append(ulDropdownMenu);
 
     // attach event listeners to Not Started, In Progress and Completed Buttons
-    liNotStartedBtn.addEventListener('click', function(event) {
-        console.log('trying to add evntLst not-started', event.target.id);
-        const todo = todos.find((el) => el.id === +event.target.id);
-        if (todo.status !== 'not-started') {
-            todo.status = 'not-started';
-            const todoHTML = document.getElementById(`todo-item-${event.target.id}`);
-            document.getElementById("not-started-column").appendChild(todoHTML);
-        }
+    liNotStartedBtn.addEventListener("click", function (event) {
+      console.log("trying to add evntLst not-started", event.target.id);
+      const todo = todos.find((el) => el.id === +event.target.id);
+      if (todo.status !== "not-started") {
+        todo.status = "not-started";
+        const todoHTML = document.getElementById(
+          `todo-item-${event.target.id}`
+        );
+        document.getElementById("not-started-column").appendChild(todoHTML);
+      }
     });
-    liInProgressBtn.addEventListener('click', function(event) {
-        console.log('trying to add evntLst in-progress', event.target.id);
-        const todo = todos.find((el) => el.id === +event.target.id);
-        if (todo.status !== 'in-progress') {
-            todo.status = 'in-progress';
-            const todoHTML = document.getElementById(`todo-item-${event.target.id}`);
-            document.getElementById("in-progress-column").appendChild(todoHTML);
-        }
+    liInProgressBtn.addEventListener("click", function (event) {
+      console.log("trying to add evntLst in-progress", event.target.id);
+      const todo = todos.find((el) => el.id === +event.target.id);
+      if (todo.status !== "in-progress") {
+        todo.status = "in-progress";
+        const todoHTML = document.getElementById(
+          `todo-item-${event.target.id}`
+        );
+        document.getElementById("in-progress-column").appendChild(todoHTML);
+      }
     });
-    liCompletedBtn.addEventListener('click', function(event) {
-        console.log('trying to add evntLst in-progress', event.target.id);
-        const todo = todos.find((el) => el.id === +event.target.id);
-        if (todo.status !== 'completed') {
-            todo.status = 'completed';
-            const todoHTML = document.getElementById(`todo-item-${event.target.id}`);
-            document.getElementById("completed-column").appendChild(todoHTML);
-        }
+    liCompletedBtn.addEventListener("click", function (event) {
+      console.log("trying to add evntLst in-progress", event.target.id);
+      const todo = todos.find((el) => el.id === +event.target.id);
+      if (todo.status !== "completed") {
+        todo.status = "completed";
+        const todoHTML = document.getElementById(
+          `todo-item-${event.target.id}`
+        );
+        document.getElementById("completed-column").appendChild(todoHTML);
+      }
     });
 
     // Append the new list item to the existing list
@@ -105,7 +117,7 @@ document.getElementById("userForm").addEventListener("submit", function(event) {
     // localStorage.setItem('todos', JSON.stringify(todos));
     // const fromLS = localStorage.getItem('todos');
     // console.log('here', JSON.parse(fromLS));
-});
+  });
 
 // delete button
 // localStorage
