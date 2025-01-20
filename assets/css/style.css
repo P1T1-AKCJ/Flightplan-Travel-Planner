@@ -24,6 +24,7 @@
  body {
   background-color: #bfdeed;
   font-family: 'Roboto', sans-serif;
+  color: #1f1f1f;
 }
 
 /* ----------------------------------------------------------- */
@@ -91,7 +92,15 @@ form#userForm input[type="text"] {
 
   form#userForm input[type="text"]:focus {
     border-color: var(--brightblue);
-    background-color: #ffffff;
+    background-color: #edf5fe;
+  }
+
+  form#userForm input[type="text"]:focus:hover {
+    background-color: #edf5fe;
+  }
+
+  form#userForm input[type="text"]:hover {
+    background-color: #dadce0;
   }
 /* ----------------------------------------------------------- */
 
@@ -211,6 +220,7 @@ nav {
   opacity: 1;
   visibility: visible;
 }
+
 .icon-button .tooltip {
   position: absolute;
   top: 120%;
@@ -226,15 +236,6 @@ nav {
   transition: opacity 0.3s ease, visibility 0.3s ease;
   white-space: nowrap;
   z-index: 10;
-}
-
-form#userForm input[type="text"]:hover {
-  background-color: #dadce0;
-
-}
-
-form#userForm input[type="text"]:focus:hover {
-  background-color: #ffffff;
 }
 
 main {
