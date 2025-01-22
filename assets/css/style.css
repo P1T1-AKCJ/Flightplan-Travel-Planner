@@ -369,9 +369,9 @@ main {
 
 .column-count {
   font-size: 0.8em;
-  font-weight: normal;
+  font-weight: bold;
   margin-left: auto;
-  padding-right: 10px;
+  padding-right: 18px;
   padding-top: 3px;
   color: white;
 }
