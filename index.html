@@ -88,6 +88,23 @@
     </header>
 
     <main>
+      <div class="modal fade delete-todo-modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Do you really want to delete this todo?</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary dismiss-modal" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-danger" id="delete-todo-btn">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div> 
       <section class="main-table">
         <!-- Not Started -->
         <article class="column">

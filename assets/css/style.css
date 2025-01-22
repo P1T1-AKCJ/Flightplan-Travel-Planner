@@ -216,14 +216,14 @@ form#addTaskForm input[type="text"]:focus {
   height: 100%;
   border: none;
   border-radius: 0 25px 25px 0;
-  background-color: var(--brightBlue); */
+  background-color: var(--brightBlue);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   margin: 0;
   position: absolute;
-  right: 0; Stick to the right edge
+  right: 0; /* Stick to the right edge */
 }
 
 .icon-button:hover {
@@ -451,6 +451,10 @@ main {
   font-size: 28px;
 }
 
+.dropdown .btn:hover {
+  background-color: var(--brightBlue);;
+}
+
 .dropdown-menu {
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -463,6 +467,37 @@ main {
   vertical-align: middle;
   font-size: 20px;
   color: #777;
+}
+
+/* Delete Button Styling */
+.delete-btn {
+  background-color: #e5f1f6;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  box-shadow: none;
+  color: #777;
+  font-size: 14px;
+  margin-left: 0.3em;
+}
+
+.delete-btn:hover {
+  background-color: #d7717d;
+
+  .btn-close {
+    color: black;
+  }
+}
+
+.btn-close:active,
+.btn-close:focus {
+  box-shadow: none;
 }
 
 /* ----------------------------------------------------------- */

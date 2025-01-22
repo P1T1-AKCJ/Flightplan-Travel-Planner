@@ -1,4 +1,4 @@
-const todos = [];
+let todos = [];
 
 // form submission
 document
@@ -84,7 +84,6 @@ document
 
     // attach event listeners to Not Started, In Progress and Completed Buttons
     liNotStartedBtn.addEventListener("click", function (event) {
-      console.log("trying to add evntLst not-started", event.target.id);
       const todo = todos.find((el) => el.id === +event.target.id);
       if (todo.status !== "not-started") {
         todo.status = "not-started";
@@ -96,7 +95,6 @@ document
       }
     });
     liInProgressBtn.addEventListener("click", function (event) {
-      console.log("trying to add evntLst in-progress", event.target.id);
       const todo = todos.find((el) => el.id === +event.target.id);
       if (todo.status !== "in-progress") {
         todo.status = "in-progress";
@@ -119,7 +117,6 @@ document
       updateCounts(); // Update the counts after moving
     });
     liCompletedBtn.addEventListener("click", function (event) {
-      console.log("trying to add evntLst in-progress", event.target.id);
       const todo = todos.find((el) => el.id === +event.target.id);
       if (todo.status !== "completed") {
         todo.status = "completed";
@@ -138,6 +135,19 @@ document
     document.getElementById("inputField").value = "";
 
     updateCounts(); // Update counts
+
+    // delete button
+    const deleteBtn = document.createElement("div");
+    deleteBtn.classList.add('delete-btn');
+    deleteBtn.innerHTML = `
+    <button type="button" class="btn btn-close" data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop">
+    </button>
+  `;
+    deleteBtn.addEventListener('click', function () {
+      showDeleteTodoModal(todoId, userInput);
+    });
+    divTodo.appendChild(deleteBtn);
 
     //Store information in local storage
     // localStorage.setItem('todos', JSON.stringify(todos));
@@ -194,4 +204,26 @@ function updateCounts() {
     inProgressCount;
   document.querySelector(".on-hold .column-count").textContent = onHoldCount;
   document.querySelector(".done .column-count").textContent = completedCount;
+}
+
+function showDeleteTodoModal(todoId, userInput) {
+  const modalBody = document.querySelector(".modal-body");
+  modalBody.innerHTML = userInput;
+  const deleteTodoBtn = document.getElementById("delete-todo-btn");
+  deleteTodoBtn.addEventListener('click', function () {
+    deleteTodo(todoId);
+  });
+}
+
+function deleteTodo(todoId) {
+  todos = todos.filter((todo) => todo.id !== todoId);
+  const todoToDelete = document.getElementById(`todo-item-${todoId}`);
+  todoToDelete?.remove();
+  dismissModal();
+  updateCounts();
+}
+
+function dismissModal() {
+  const dismissModalBtn = document.querySelector(".dismiss-modal");
+  dismissModalBtn.click();
 }
