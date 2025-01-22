@@ -11,23 +11,27 @@
   --dark: #2a5360;
 
   /* Jaden Variables */
+  --bodyBackground: #D9E7F1;
+  --darkGrayText:#1f1f1f;
   --brightBlue: #1778f0;
   --brightBlueHover: #285fdf;
-  --darkGrayText:#1f1f1f;
   --white: #ffffff;
   --lightGrayBorder: #dadce0;
   --softBlueBackground: #bfdeed;
   --softBlueFocus: #edf5fe;
   --softGreyBackground: #e5f1f6;
   --softGreyDropdown: #f1f3f4;
-  --bodyBackground: #D9E7F1;
 }
 /* ----------------------------------------------------------- */
- body {
+/* ---------------------- GLOBAL DEFAULTS --------------------- */
+/* ----------------------------------------------------------- */
+body {
   background-color: var(--bodyBackground);
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   color: var(--darkGrayText);
 }
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
 header {
     display: flex;
@@ -47,10 +51,14 @@ header {
 .brand-logo {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
 /* id for visual portion of brand logo */
 #brandLogoMark {
+    display: flex;
+    align-items: center;
+
     width: 40px;
     height: 40px;
     margin: 0 10px;
@@ -82,7 +90,7 @@ form#addTaskForm {
 /* text input field inside the form container */
 form#addTaskForm input[type="text"] {
   flex: 1;
-  padding: 10px 18px;
+  padding: 10px 120px 10px 18px;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 25px;
@@ -307,12 +315,27 @@ main {
     gap: 20px;
 }
 
+@media (max-width: 768px) {
+  .main-table {
+    flex-direction: column;
+    align-items: center;
+  }
+  .column {
+    width: 80%;
+    margin: 0 0 1em;
+  }
+}
+
 .column {
     width: 25%;
-    height: 800px;
+    height: 1000px;
     margin: 0.2em;
     border-radius: 10px;
     background-color: #ffffff;
+    min-width: 260px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .column:hover {
@@ -320,10 +343,10 @@ main {
 }
 
 .column .todo-list {
-    height: 536px;
     padding-left: 15px;
     padding-right: 15px;
     overflow-y: auto;
+    height: 100%;
 }
 
 .main-table h3 {
@@ -336,6 +359,7 @@ main {
   padding: 10px 15px;
   font-weight: 550;
   font-size: 20px;
+  margin: 0;
 }
 
 .column-title {
@@ -353,27 +377,25 @@ main {
 }
 
 .column-header.not-started {
-  background-color: #7e8ca0;
+  background-color: #8b99aa;
   color: white;
-  display: flex;
 }
 
 .column-header.working-on-it {
-  background-color: #f2be6f;
+  background-color: #f3c57d;
   color: white;
-  display: flex;
 }
 
 .column-header.on-hold {
-  background-color: #d7717d;
+  background-color: #db7f8a;
   color: white;
 }
 
 .column-header.done {
-  background-color: #6dcf96;
+  background-color: #7cd4a1;
   color: white;
-  display: flex;
 }
+
 
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
@@ -383,20 +405,30 @@ main {
 .todo-item {
   display: flex;
   align-items: center;
+  min-width: 0;
   width: 100%;
   border-bottom: 1px solid var(--lightGrayBorder);
   background-color: #fff;
-  padding-right:;
+  padding: 0.4em 0.5em;
 }
 
 /* Todo text styling */
 .todo-text {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: 1rem;
   font-weight: 500;
   color: #202124;
   margin-right: 1em;
   flex: 1;
-  padding: 15px 0px;
+  padding: 10px 0px;
+  flex-wrap: wrap;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
 }
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
@@ -436,3 +468,17 @@ main {
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #e5f1f6;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
+}
