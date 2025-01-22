@@ -1,4 +1,5 @@
 let todos = [];
+let todoId = 0;
 
 // form submission
 document
@@ -14,8 +15,7 @@ document
       return;
     }
 
-    const todoId = todos.length + 1;
-    todos.push({ id: todoId, text: userInput, status: "not-started" });
+    todos.push({ id: todoId++, text: userInput, status: "not-started" });
 
     // create new list item
     const divTodo = document.createElement("li");
