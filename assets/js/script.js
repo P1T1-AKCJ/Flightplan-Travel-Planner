@@ -1,5 +1,30 @@
 let todos = [];
 let todoId = 0;
+const mainTableNavMobile = document.querySelector(".main-table-mobile");
+
+// on load webpage event listener
+window.addEventListener('load', function(event) {
+  if (event.currentTarget.innerWidth <= 768) {
+    mainTableNavMobile.classList.remove("hide");
+  } else {
+    if (event.currentTarget.innerWidth > 768 
+      && !mainTableNavMobile.classList.value.includes('hide')) {
+      mainTableNavMobile.classList.add("hide");
+    }
+  }
+});
+
+// screen resize event listener
+window.addEventListener('resize', function(event) {
+  if (event.currentTarget.innerWidth <= 768) {
+    mainTableNavMobile.classList.remove("hide");
+  } else {
+    if (event.currentTarget.innerWidth > 768 
+      && !mainTableNavMobile.classList.value.includes('hide')) {
+      mainTableNavMobile.classList.add("hide");
+    }
+  }
+});
 
 renderDataFromLocalStorage();
 
@@ -49,6 +74,64 @@ document.addEventListener("DOMContentLoaded", function () {
     clearButton.style.display = "none";
     inputField.focus(); // keep the focus on the input
   });
+});
+
+const notStartedTab = document.getElementById("not-started-tab");
+const inProgressTab = document.getElementById("in-progress-tab");
+const onHoldTab = document.getElementById("on-hold-tab");
+const doneTab = document.getElementById("done-tab");
+
+const notStartedColumn = document.getElementById("not-started-column");
+const inProgressColumn = document.getElementById("in-progress-column");
+const onHoldColumn = document.getElementById("on-hold-column");
+const doneColumn = document.getElementById("completed-column");
+
+notStartedTab.addEventListener('click', function (event) {
+  event.target.textContent = "🕒 Not Started";
+  inProgressTab.textContent = "⚙️";
+  onHoldTab.textContent = "🛑";
+  doneTab.textContent = "✅";
+
+  notStartedColumn.parentElement.classList.remove("hide");
+  inProgressColumn.parentElement.classList.add("hide");
+  onHoldColumn.parentElement.classList.add("hide");
+  doneColumn.parentElement.classList.add("hide");
+});
+
+inProgressTab.addEventListener('click', function (event) {
+  event.target.textContent = "⚙️ Working on it";
+  notStartedTab.textContent = "🕒";
+  onHoldTab.textContent = "🛑";
+  doneTab.textContent = "✅";
+
+  notStartedColumn.parentElement.classList.add("hide");
+  inProgressColumn.parentElement.classList.remove("hide");
+  onHoldColumn.parentElement.classList.add("hide");
+  doneColumn.parentElement.classList.add("hide");
+});
+
+onHoldTab.addEventListener('click', function (event) {
+  event.target.textContent = "🛑 On Hold";
+  notStartedTab.textContent = "🕒";
+  inProgressTab.textContent = "⚙️";
+  doneTab.textContent = "✅";
+
+  notStartedColumn.parentElement.classList.add("hide");
+  inProgressColumn.parentElement.classList.add("hide");
+  onHoldColumn.parentElement.classList.remove("hide");
+  doneColumn.parentElement.classList.add("hide");
+});
+
+doneTab.addEventListener('click', function (event) {
+  event.target.textContent = "✅ Done";
+  notStartedTab.textContent = "🕒";
+  inProgressTab.textContent = "⚙️";
+  onHoldTab.textContent = "🛑";
+
+  notStartedColumn.parentElement.classList.add("hide");
+  inProgressColumn.parentElement.classList.add("hide");
+  onHoldColumn.parentElement.classList.add("hide");
+  doneColumn.parentElement.classList.remove("hide");
 });
 
 function updateCounts() {

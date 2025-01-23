@@ -1,0 +1,43 @@
+.main-table-mobile.hide {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .main-table-mobile {
+        background-color: #ffffff;
+        opacity: 75%;
+        border-radius: 25px;
+    }
+    
+    .nav-pills {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .nav-pills li {
+        margin: 0 0.5em;
+        padding: 0.4em 0.9em;
+        border-radius: 25px;
+        color: white;
+    }
+    
+    .not-started-tab {
+        background-color: #8b99aa;
+    }   
+    
+    .in-progress-tab {
+        background-color: #f3c57d;
+    }
+    
+    .on-hold-tab {
+        background-color: #db7f8a;
+    }
+    
+    .done-tab {
+        background-color: #7cd4a1;
+    }
+    
+    .column.hide {
+        display: none;
+    }
+}
