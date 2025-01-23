@@ -1,0 +1,198 @@
+:root {
+    --sand: #eadbd4;
+    --blue: #53aba9;
+    --dark: #004080;
+    --verylightgray: #fafafa;
+    --white: #ffffff;
+    --brightblue: #1778f0;
+    --lightgray: #dadce0;
+}
+
+/* ----------------------------------------------------------- */
+/* ---------------------- GLOBAL DEFAULTS --------------------- */
+/* ----------------------------------------------------------- */
+/* margin and padding on body... despite no properties; resolved */
+body {
+background-color: #bfdeed;
+  font-family: 'Roboto', sans-serif;
+  color: #1f1f1f;
+  margin: 0; 
+  padding: 0;
+}
+
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+background-color: var(--white);
+border-bottom: 1px solid var(--lightGrayBorder);
+opacity: 78%;
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+margin: 0;
+padding: 0;
+}
+
+
+header h3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 30px;
+    color: var(--brightblue);
+    font-size: 1.2rem;
+    font-weight: 400;
+   
+}
+
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: var(--brightblue);
+    text-align: center;
+    color:white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, .1);
+    opacity: 90%;
+}
+
+
+.back-to-home {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* BRAND LOGO */
+.branding {
+    display: flex;
+    align-items: center;
+  }
+
+
+#brand-logo-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 5% 0 5px;
+  }
+
+
+#brand-logo {
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--brightblue);
+    font-size: 40px;
+}
+
+.promo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*Styling for About Us banner*/ 
+
+.banner {
+    background-color: var(--brightblue);
+    text-align: center;
+    padding: 1px;
+    color:white;
+    border-width: 10px;
+    border-color: var(#bfdeed);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, .1);
+    opacity: 90%;
+    
+}
+
+/* Meet the team banner */
+
+.big-banner {
+    background-image: url("../../images/wavebanner.jpg");
+    background-size: contain;
+    text-align: center;
+    padding: 20px;
+    color: var(--brightblue);
+    opacity: 80%;
+    font-family: "Pacifico", serif;
+    font-size: larger;
+    border-width: 10px;
+    border-color: var(#bfdeed);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, .1);
+}
+
+
+/* Box styling*/
+
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 10%;
+    min-height: 100%;
+}
+
+.card {
+    border-radius: 10%;
+    background-color: var(--white);
+    flex: 0 0 400px;
+    overflow: hidden;
+    flex-basis: calc(20% - 40px);
+    margin: 20px;
+
+}
+
+.card h3 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: white;
+    font-family: "Pacifico", serif;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+    margin: 0;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1); 
+
+
+}
+
+.antonina {
+    background-color:#8b99aa;
+}
+
+.kirstin {
+    background-color:#f3c57d;
+}
+
+.jaden {
+    background: #db7f8a;
+}
+
+.chris {
+    background: #7cd4a1;
+}
+
+.card p {
+    color: var(--brightblue);
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 90%;
+    text-align: center;
+}
+.card img {
+    width: 100%;
+}
+
+.card:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+

@@ -1,0 +1,36 @@
+/* ----------------------------------------------------------- */
+/* ----------------------- BRAND-LOGO -----------------------  */
+/* ----------------------------------------------------------- */
+/* class for combined icon and text */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    max-width: 200px;
+  }
+
+/* id for visual portion of brand logo */
+#brandLogoMark {
+    display: flex;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+  }
+
+/* id for textual portion of brand logo */
+#brandLogoType {
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--brightBlue);
+    font-size: 25px;
+    padding-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .brand-logo {
+    margin-bottom: 10px;
+  }}
