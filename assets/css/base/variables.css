@@ -1,0 +1,23 @@
+:root {
+    /* Kirstin Variables */
+    --green: lightseagreen;
+    --darkgreen: rgb(103, 207, 0);
+    --light: #f2f2f2;
+    --darkblue: #2b6777;
+    --darkest: #203354;
+    --sand: #eadbd4;
+    --blue: #53aba9;
+    --dark: #2a5360;
+  
+    /* Jaden Variables */
+    --bodyBackground: #D9E7F1;
+    --darkGrayText:#1f1f1f;
+    --brightBlue: #1778f0;
+    --brightBlueHover: #285fdf;
+    --white: #ffffff;
+    --lightGrayBorder: #dadce0;
+    --softBlueBackground: #bfdeed;
+    --softBlueFocus: #edf5fe;
+    --softGreyBackground: #e5f1f6;
+    --softGreyDropdown: #f1f3f4;
+  }

@@ -1,0 +1,128 @@
+/* Add Task Form */
+form#addTaskForm {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 6px 10px;
+    width: auto;
+    max-width: calc(100% - 150px);
+    min-width: 200px;
+    overflow: hidden;
+  }
+  
+  form#addTaskForm input[type="text"] {
+    flex-grow: 1;
+    max-width: calc(100% - 150px);
+    min-width: 200px;
+    overflow: hidden;
+    padding: 10px 120px 10px 18px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    background-color: #ecedef;
+    color: var(--darkGrayText);
+    box-sizing: border-box;
+    height: 40px;
+  }
+  
+  form#addTaskForm input[type="text"]::placeholder {
+    color: #777;
+  }
+  
+  form#addTaskForm input[type="text"]:hover {
+    background-color: #dadce0;
+  }
+  
+  form#addTaskForm input[type="text"]:focus {
+    border-color: var(--brightBlue);
+    background-color: var(--softBlueFocus);
+  }
+  
+  /* Clear Button Styling */
+  .clear-icon {
+    position: absolute;
+    right: 70px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #777;
+    visibility: hidden;
+    transition: background-color 0.3s ease;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+  
+  .clear-icon:hover {
+    color: #777;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .clear-icon:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .clear-icon .tooltip {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  
+  /* Separator Line */
+  .clear-icon::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    height: 60%;
+    width: 1px;
+    background-color: #ccc;
+    top: 20%;
+  }
+  
+  /* Input Wrapper */
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    min-width: 280px;
+    margin: 0 auto;
+  }
+  
+  .input-wrapper input[type="text"] {
+    flex: 1;
+    padding: 12px 75px 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    background-color: #e5e5e5;
+    color: #333;
+    box-sizing: border-box;
+  }
+  
+  /* Make the clear button visible when input is not empty */
+  .input-wrapper input:not(:placeholder-shown) + .clear-icon {
+    visibility: visible;
+  }
+  
+  @media (max-width: 768px) {  form#addTaskForm {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 10px;
+  }}

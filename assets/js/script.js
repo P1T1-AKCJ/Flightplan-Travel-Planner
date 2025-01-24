@@ -1,5 +1,32 @@
 let todos = [];
 let todoId = 0;
+const mainTableNavMobile = document.querySelector(".main-table-mobile");
+
+// on load webpage event listener
+window.addEventListener('load', function(event) {
+  if (event.currentTarget.innerWidth <= 768) {
+    mainTableNavMobile.classList.remove("hide");
+  } else {
+    if (event.currentTarget.innerWidth > 768 
+      && !mainTableNavMobile.classList.value.includes('hide')) {
+      mainTableNavMobile.classList.add("hide");
+    }
+  }
+});
+
+// screen resize event listener
+window.addEventListener('resize', function(event) {
+  if (event.currentTarget.innerWidth <= 768) {
+    mainTableNavMobile.classList.remove("hide");
+  } else {
+    if (event.currentTarget.innerWidth > 768 
+      && !mainTableNavMobile.classList.value.includes('hide')) {
+      mainTableNavMobile.classList.add("hide");
+    }
+  }
+});
+
+renderDataFromLocalStorage();
 
 // form submission
 document
@@ -9,19 +36,178 @@ document
 
     // get user input
     let userInput = document.getElementById("inputField").value;
+    let userInputObj;
+    const todoId = +localStorage.getItem('todoId');
 
     // validate user input: do nothing if empty
     if (userInput === "") {
       return;
+    } else {
+      userInputObj = { 
+        id: todoId + 1, 
+        text: userInput, 
+        status: "not-started" 
+      };
+      todos.push(userInputObj);
     }
+    initTodoItem(userInput, userInputObj.status, todoId);
+    storeUserInput(userInputObj);
+    storeToDoCount();
+  });
 
-    todos.push({ id: todoId++, text: userInput, status: "not-started" });
+document.addEventListener("DOMContentLoaded", function () {
+  const inputField = document.getElementById("inputField");
+  const clearButton = document.getElementById("clearButton");
 
-    // create new list item
+  // show/hide the clear button based on input
+  inputField.addEventListener("input", function () {
+    if (inputField.value.trim() !== "") {
+      clearButton.style.display = "flex"; // show the clear button
+    } else {
+      clearButton.style.display = "none"; // hide the clear button
+    }
+  });
+
+  // clear the input field and hide the button when clicked
+  clearButton.addEventListener("click", function () {
+    inputField.value = "";
+    clearButton.style.display = "none";
+    inputField.focus(); // keep the focus on the input
+  });
+});
+
+const notStartedTab = document.getElementById("not-started-tab");
+const inProgressTab = document.getElementById("in-progress-tab");
+const onHoldTab = document.getElementById("on-hold-tab");
+const doneTab = document.getElementById("done-tab");
+
+const notStartedColumn = document.getElementById("not-started-column");
+const inProgressColumn = document.getElementById("in-progress-column");
+const onHoldColumn = document.getElementById("on-hold-column");
+const doneColumn = document.getElementById("completed-column");
+
+notStartedTab.addEventListener('click', function (event) {
+  event.target.textContent = "🕒 Not Started";
+  inProgressTab.textContent = "⚙️";
+  onHoldTab.textContent = "🛑";
+  doneTab.textContent = "✅";
+
+  notStartedColumn.parentElement.classList.remove("hide");
+  inProgressColumn.parentElement.classList.add("hide");
+  onHoldColumn.parentElement.classList.add("hide");
+  doneColumn.parentElement.classList.add("hide");
+});
+
+inProgressTab.addEventListener('click', function (event) {
+  event.target.textContent = "⚙️ Working on it";
+  notStartedTab.textContent = "🕒";
+  onHoldTab.textContent = "🛑";
+  doneTab.textContent = "✅";
+
+  notStartedColumn.parentElement.classList.add("hide");
+  inProgressColumn.parentElement.classList.remove("hide");
+  onHoldColumn.parentElement.classList.add("hide");
+  doneColumn.parentElement.classList.add("hide");
+});
+
+onHoldTab.addEventListener('click', function (event) {
+  event.target.textContent = "🛑 On Hold";
+  notStartedTab.textContent = "🕒";
+  inProgressTab.textContent = "⚙️";
+  doneTab.textContent = "✅";
+
+  notStartedColumn.parentElement.classList.add("hide");
+  inProgressColumn.parentElement.classList.add("hide");
+  onHoldColumn.parentElement.classList.remove("hide");
+  doneColumn.parentElement.classList.add("hide");
+});
+
+doneTab.addEventListener('click', function (event) {
+  event.target.textContent = "✅ Done";
+  notStartedTab.textContent = "🕒";
+  inProgressTab.textContent = "⚙️";
+  onHoldTab.textContent = "🛑";
+
+  notStartedColumn.parentElement.classList.add("hide");
+  inProgressColumn.parentElement.classList.add("hide");
+  onHoldColumn.parentElement.classList.add("hide");
+  doneColumn.parentElement.classList.remove("hide");
+});
+
+function updateCounts() {
+  // get the count of tasks in each column
+  const notStartedCount = document.querySelectorAll(
+    "#not-started-column .todo-item"
+  ).length;
+  const inProgressCount = document.querySelectorAll(
+    "#in-progress-column .todo-item"
+  ).length;
+  const onHoldCount = document.querySelectorAll(
+    "#on-hold-column .todo-item"
+  ).length;
+  const completedCount = document.querySelectorAll(
+    "#completed-column .todo-item"
+  ).length;
+
+  // update the text content of the span elements with the class "column-count"
+  document.querySelector(".not-started .column-count").textContent =
+    notStartedCount;
+  document.querySelector(".working-on-it .column-count").textContent =
+    inProgressCount;
+  document.querySelector(".on-hold .column-count").textContent = onHoldCount;
+  document.querySelector(".done .column-count").textContent = completedCount;
+}
+
+function showDeleteTodoModal(todoId, userInput) {
+  const modalBody = document.querySelector(".modal-body");
+  modalBody.innerHTML = userInput;
+  const deleteTodoBtn = document.getElementById("delete-todo-btn");
+  deleteTodoBtn.addEventListener('click', function () {
+    deleteTodo(todoId);
+  });
+}
+
+function deleteTodo(todoId) {
+  todos = todos.filter((todo) => todo.id !== todoId);
+  const todoToDelete = document.getElementById(`todo-item-${todoId}`);
+  todoToDelete?.remove();
+  dismissModal();
+  updateCounts();
+  deleteToDoFromLocalStorage(todoId);
+}
+
+function dismissModal() {
+  const dismissModalBtn = document.querySelector(".dismiss-modal");
+  dismissModalBtn.click();
+}
+
+function storeUserInput(userInputObj) {
+  const userInputList = JSON.parse(localStorage.getItem('userInputList'));
+  if (userInputList) {
+    const storedData = JSON.parse(localStorage.getItem('userInputList'));
+    storedData.push(userInputObj);
+    localStorage.setItem('userInputList', JSON.stringify(storedData));
+  } else {
+    localStorage.setItem('userInputList', JSON.stringify([userInputObj]));
+  }
+}
+
+function renderDataFromLocalStorage() {
+  const storedData = JSON.parse(localStorage.getItem('userInputList'));
+  if (storedData) {
+    todos = storedData;
+    storedData.forEach((userInputObj) => {
+      initTodoItem(userInputObj.text, userInputObj.status, userInputObj.id);
+    });
+  }
+}
+
+function initTodoItem(userInputText, status, todoId) {
     const divTodo = document.createElement("li");
     const inputText = document.createElement("div");
+    
     inputText.setAttribute("class", "todo-text");
-    inputText.textContent = userInput;
+    inputText.textContent = userInputText;
     divTodo.setAttribute("id", `todo-item-${todoId}`);
     divTodo.appendChild(inputText);
     divTodo.classList.add("todo-item");
@@ -92,6 +278,7 @@ document
         );
         document.getElementById("not-started-column").appendChild(todoHTML);
         updateCounts(); // call updateCounts to refresh the counts
+        persistItemStatusInLocalStorage(+event.target.id, "not-started");
       }
     });
     liInProgressBtn.addEventListener("click", function (event) {
@@ -103,6 +290,7 @@ document
         );
         document.getElementById("in-progress-column").appendChild(todoHTML);
         updateCounts(); // call updateCounts to refresh the counts
+        persistItemStatusInLocalStorage(+event.target.id, "in-progress");
       }
     });
     liOnHoldBtn.addEventListener("click", function (event) {
@@ -115,6 +303,7 @@ document
         document.getElementById("on-hold-column").appendChild(todoHTML);
       }
       updateCounts(); // Update the counts after moving
+      persistItemStatusInLocalStorage(+event.target.id, "on-hold");
     });
     liCompletedBtn.addEventListener("click", function (event) {
       const todo = todos.find((el) => el.id === +event.target.id);
@@ -125,13 +314,16 @@ document
         );
         document.getElementById("completed-column").appendChild(todoHTML);
         updateCounts(); // call updateCounts to refresh the counts
+        persistItemStatusInLocalStorage(+event.target.id, "completed");
       }
     });
 
     // Append the new list item to the existing list
-    document.getElementById("not-started-column").appendChild(divTodo);
+    // TODO - organize it by status of input item
+    if (status) {
+      document.getElementById(`${status}-column`).appendChild(divTodo);
+    } 
 
-    // clear input field after submit
     document.getElementById("inputField").value = "";
 
     updateCounts(); // Update counts
@@ -140,90 +332,34 @@ document
     const deleteBtn = document.createElement("div");
     deleteBtn.classList.add('delete-btn');
     deleteBtn.innerHTML = `
-    <button type="button" class="btn btn-close" data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop">
-    </button>
-  `;
-    deleteBtn.addEventListener('click', function () {
-      showDeleteTodoModal(todoId, userInput);
-    });
+      <button type="button" class="btn btn-close" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">
+      </button>
+    `;
+    deleteBtn.addEventListener('click', function (event) {
+      showDeleteTodoModal(todoId, userInputText);
+    }); 
     divTodo.appendChild(deleteBtn);
-
-    //Store information in local storage
-    // localStorage.setItem('todos', JSON.stringify(todos));
-    // const fromLS = localStorage.getItem('todos');
-    // console.log('here', JSON.parse(fromLS));
-  });
-
-// delete button
-// localStorage
-// modal - for the delete button
-// Rich suggested to make the user input as modal
-// ---------------------------------------------------------------------------
-
-document.addEventListener("DOMContentLoaded", function () {
-  const inputField = document.getElementById("inputField");
-  const clearButton = document.getElementById("clearButton");
-
-  // show/hide the clear button based on input
-  inputField.addEventListener("input", function () {
-    if (inputField.value.trim() !== "") {
-      clearButton.style.display = "flex"; // show the clear button
-    } else {
-      clearButton.style.display = "none"; // hide the clear button
-    }
-  });
-
-  // clear the input field and hide the button when clicked
-  clearButton.addEventListener("click", function () {
-    inputField.value = "";
-    clearButton.style.display = "none";
-    inputField.focus(); // keep the focus on the input
-  });
-});
-
-function updateCounts() {
-  // get the count of tasks in each column
-  const notStartedCount = document.querySelectorAll(
-    "#not-started-column .todo-item"
-  ).length;
-  const inProgressCount = document.querySelectorAll(
-    "#in-progress-column .todo-item"
-  ).length;
-  const onHoldCount = document.querySelectorAll(
-    "#on-hold-column .todo-item"
-  ).length;
-  const completedCount = document.querySelectorAll(
-    "#completed-column .todo-item"
-  ).length;
-
-  // update the text content of the span elements with the class "column-count"
-  document.querySelector(".not-started .column-count").textContent =
-    notStartedCount;
-  document.querySelector(".working-on-it .column-count").textContent =
-    inProgressCount;
-  document.querySelector(".on-hold .column-count").textContent = onHoldCount;
-  document.querySelector(".done .column-count").textContent = completedCount;
 }
 
-function showDeleteTodoModal(todoId, userInput) {
-  const modalBody = document.querySelector(".modal-body");
-  modalBody.innerHTML = userInput;
-  const deleteTodoBtn = document.getElementById("delete-todo-btn");
-  deleteTodoBtn.addEventListener('click', function () {
-    deleteTodo(todoId);
-  });
+function deleteToDoFromLocalStorage(id) {
+  const storedData = JSON.parse(localStorage.getItem('userInputList'));
+  const newStoredData = storedData.filter((data) => data.id !== id);
+  localStorage.setItem('userInputList', JSON.stringify(newStoredData));
 }
 
-function deleteTodo(todoId) {
-  todos = todos.filter((todo) => todo.id !== todoId);
-  const todoToDelete = document.getElementById(`todo-item-${todoId}`);
-  todoToDelete?.remove();
-  dismissModal();
-  updateCounts();
+function persistItemStatusInLocalStorage (id, newStatus) {
+  const storedData = JSON.parse(localStorage.getItem('userInputList'));
+  const toDo = storedData.find((data) => data.id === id);
+  toDo.status = newStatus;
+  localStorage.setItem('userInputList', JSON.stringify(storedData));
 }
 
-function dismissModal() {
-  const dismissModalBtn = document.querySelector(".dismiss-modal");
-  dismissModalBtn.click();
+function storeToDoCount() {
+  const currentTodoId = +localStorage.getItem('todoId');
+  if (currentTodoId >= 0) {
+    localStorage.setItem('todoId', currentTodoId + 1);
+  } else {
+    localStorage.setItem('todoId', 0);
+  }
 }

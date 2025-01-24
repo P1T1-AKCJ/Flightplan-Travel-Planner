@@ -17,7 +17,7 @@
     </style>
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/import.css" />
 
     <!-- Bootstrap JS (with defer) -->
     <script
@@ -26,11 +26,13 @@
     ></script>
 
     <!-- Main JS (with defer) -->
+    <script src="./assets/js/functions.js"></script>
+    <script src="./assets/js/toggle.js"></script>
     <script src="./assets/js/script.js" defer></script>
   </head>
 
-  <body>
-    <header>
+  <body id="body">
+    <header id="header">
       <section class="brand-logo">
         <img
           src="assets/images/jaden-custom-grey-suitcase-icon.png"
@@ -71,6 +73,7 @@
               alt="Home Icon"
               class="nav-icon"
             />
+            
             <span>Home</span>
           </a>
         </div>
@@ -82,6 +85,25 @@
               class="nav-icon"
             />
             <span>About</span>
+          </a>
+        </div>
+        <!-- <div class="nav-item" id="light-mode-on">
+          <img
+            src="assets/images/mode_light.svg"
+            alt="light mode"
+            class="nav-icon"
+          />
+        </div>
+        <div class="nav-item" id="dark-mode-on">
+          <img
+            src="assets/images/mode_dark.svg"
+            alt="dark mode"
+            class="nav-icon"
+          />
+        </div> -->
+        <div class="nav-item">
+          <a>
+            <button id="toggle">☀️</button>
           </a>
         </div>
       </nav>
@@ -105,6 +127,22 @@
           </div>
         </div>
       </div> 
+      <section class="main-table-mobile hide"> 
+        <ul class="nav nav-pills p-1 small rounded-5" role="tablist">
+          <li class="nav-item not-started-tab" role="presentation">
+            <div id="not-started-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">🕒 Not Started</div>
+          </li>
+          <li class="nav-item in-progress-tab" role="presentation">
+            <div id="in-progress-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">⚙️</div>
+          </li>
+          <li class="nav-item on-hold-tab" role="presentation">
+            <div id="on-hold-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">🛑</div>
+          </li>
+          <li class="nav-item done-tab" role="presentation">
+            <div id="done-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">✅</div>
+          </li>
+        </ul>
+      </section>
       <section class="main-table">
         <!-- Not Started -->
         <article class="column">
@@ -115,7 +153,7 @@
         </article>
 
         <!-- Working On It -->
-        <article class="column">
+        <article class="column hide">
           <h3 class="column-header working-on-it">
             ⚙️ Working On It <span class="column-count">0</span>
           </h3>
@@ -123,7 +161,7 @@
         </article>
 
         <!-- On Hold -->
-        <article class="column">
+        <article class="column hide">
           <h3 class="column-header on-hold">
             🛑 On Hold <span class="column-count">0</span>
           </h3>
@@ -131,7 +169,7 @@
         </article>
 
         <!-- Done -->
-        <article class="column">
+        <article class="column hide">
           <h3 class="column-header done">
             ✅ Done <span class="column-count">0</span>
           </h3>
