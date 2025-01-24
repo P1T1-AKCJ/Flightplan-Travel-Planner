@@ -11,10 +11,11 @@
 
 /* Components */
 @import 'components/branding.css';
-@import 'components/buttons.css'; /* here */
-@import 'components/forms.css'; /* here */
+@import 'components/buttons.css';
+@import 'components/forms.css';
 @import 'components/nav.css';
 @import 'components/todoItem.css';
+@import 'components/progressbar.css';
 @import 'components/main-table-mobile.css';
 
 /* Pages */

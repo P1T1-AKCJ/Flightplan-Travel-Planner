@@ -1,0 +1,15 @@
+.progress-bar.bg-not-started {
+    background-color: #8b99aa;
+}
+
+.progress-bar.bg-working-on-it {
+    background-color: #f3c57d;
+}
+
+.progress-bar.bg-on-hold {
+    background-color: #db7f8a;
+}
+
+.progress-bar.bg-done {
+    background-color: #7cd4a1;
+}

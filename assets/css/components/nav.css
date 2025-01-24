@@ -6,7 +6,7 @@ nav {
     padding-right: 10px;
     flex-wrap: wrap;
   }
-  
+
   /* Individual Nav Items */
   .nav-item {
     display: flex;
@@ -14,7 +14,7 @@ nav {
     color: var(--brightBlue);
   }
 
-  
+
   /* Nav Link Styling */
   .nav-link {
     display: flex;
@@ -27,19 +27,20 @@ nav {
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     gap: 10px;
   }
-  
+
   /* Hover Effect for Nav Link */
   .nav-link:hover {
     background-color: #def1ff;
     border: 1px solid var(--brightBlue);
   }
-  
+
   /* Nav Icon Styling */
   .nav-icon {
     width: 20px;
     height: 20px;
+
   }
-  
+
   .nav-link span {
     font-size: 1rem;
     font-weight: 500;
@@ -51,7 +52,7 @@ nav {
     justify-content: space-between;
   }
 
-  
+
   .nav-link {
     font-size: 0.8rem;
     padding: 5px 8px;
