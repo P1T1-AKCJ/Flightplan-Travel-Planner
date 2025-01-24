@@ -6,6 +6,7 @@ const mainTableNavMobile = document.querySelector(".main-table-mobile");
 window.addEventListener("load", function (event) {
   if (event.currentTarget.innerWidth <= 768) {
     mainTableNavMobile.classList.remove("hide");
+    setCountsAsBadge('not-started');
   } else {
     if (
       event.currentTarget.innerWidth > 768 &&
@@ -41,22 +42,24 @@ document
     // get user input
     let userInput = document.getElementById("inputField").value;
     let userInputObj;
-    const todoId = +localStorage.getItem("todoId");
+    const lastTodoId = +localStorage.getItem('todoId');
+    const todoId = lastTodoId + 1;
 
     // validate user input: do nothing if empty
     if (userInput === "") {
       return;
     } else {
-      userInputObj = {
-        id: todoId + 1,
-        text: userInput,
-        status: "not-started",
+      userInputObj = { 
+        id: todoId, 
+        text: userInput, 
+        status: "not-started" 
       };
       todos.push(userInputObj);
     }
     initTodoItem(userInput, userInputObj.status, todoId);
     storeUserInput(userInputObj);
     storeToDoCount();
+    setCountsAsBadge('not-started');
   });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -90,43 +93,37 @@ const inProgressColumn = document.getElementById("in-progress-column");
 const onHoldColumn = document.getElementById("on-hold-column");
 const doneColumn = document.getElementById("completed-column");
 
-notStartedTab.addEventListener("click", function (event) {
-  event.target.textContent = "🕒 Not Started";
-  inProgressTab.textContent = "⚙️";
-  onHoldTab.textContent = "🛑";
-  doneTab.textContent = "✅";
+notStartedTab.addEventListener('click', function (event) {
 
   notStartedColumn.parentElement.classList.remove("hide");
   inProgressColumn.parentElement.classList.add("hide");
   onHoldColumn.parentElement.classList.add("hide");
   doneColumn.parentElement.classList.add("hide");
+
+  setCountsAsBadge('not-started');
 });
 
-inProgressTab.addEventListener("click", function (event) {
-  event.target.textContent = "⚙️ Working on it";
-  notStartedTab.textContent = "🕒";
-  onHoldTab.textContent = "🛑";
-  doneTab.textContent = "✅";
+inProgressTab.addEventListener('click', function (event) {
 
   notStartedColumn.parentElement.classList.add("hide");
   inProgressColumn.parentElement.classList.remove("hide");
   onHoldColumn.parentElement.classList.add("hide");
   doneColumn.parentElement.classList.add("hide");
+
+  setCountsAsBadge('in-progress');
 });
 
-onHoldTab.addEventListener("click", function (event) {
-  event.target.textContent = "🛑 On Hold";
-  notStartedTab.textContent = "🕒";
-  inProgressTab.textContent = "⚙️";
-  doneTab.textContent = "✅";
+onHoldTab.addEventListener('click', function (event) {
 
   notStartedColumn.parentElement.classList.add("hide");
   inProgressColumn.parentElement.classList.add("hide");
   onHoldColumn.parentElement.classList.remove("hide");
   doneColumn.parentElement.classList.add("hide");
+
+  setCountsAsBadge('on-hold');
 });
 
-doneTab.addEventListener("click", function (event) {
+doneTab.addEventListener('click', function (event) {
   event.target.textContent = "✅ Done";
   notStartedTab.textContent = "🕒";
   inProgressTab.textContent = "⚙️";
@@ -136,6 +133,8 @@ doneTab.addEventListener("click", function (event) {
   inProgressColumn.parentElement.classList.add("hide");
   onHoldColumn.parentElement.classList.add("hide");
   doneColumn.parentElement.classList.remove("hide");
+
+  setCountsAsBadge('completed');
 });
 
 function updateCounts() {
@@ -162,6 +161,46 @@ function updateCounts() {
   document.querySelector(".done .column-count").textContent = completedCount;
 }
 
+function setCountsAsBadge(status) {
+    // get the count of tasks in each column
+    const notStartedCount = document.querySelectorAll(
+      "#not-started-column .todo-item"
+    ).length;
+    const inProgressCount = document.querySelectorAll(
+      "#in-progress-column .todo-item"
+    ).length;
+    const onHoldCount = document.querySelectorAll(
+      "#on-hold-column .todo-item"
+    ).length;
+    const completedCount = document.querySelectorAll(
+      "#completed-column .todo-item"
+    ).length;
+
+    let notStartedText = '';
+    let inProgressText = '';
+    let onHoldText = '';
+    let completedText = '';
+
+    if (status === 'not-started') {
+      notStartedText = "Not Started";
+    } else if (status === 'in-progress') {
+      inProgressText = "Working On It";
+    } else if (status === 'on-hold') {
+      onHoldText = "On Hold";
+    } else if (status === 'completed') {
+      completedText = "Done";
+    }
+
+    document.querySelector("#not-started-tab").innerHTML = 
+      `🕒 ${notStartedText} <span class="badge badge-light">${notStartedCount}</span>`;
+    document.querySelector("#in-progress-tab").innerHTML =
+      `⚙️ ${inProgressText} <span class="badge badge-light">${inProgressCount}</span>`;
+    document.querySelector("#on-hold-tab").innerHTML =
+      `🛑 ${onHoldText} <span class="badge badge-light">${onHoldCount}</span>`;
+    document.querySelector("#done-tab").innerHTML =
+      `✅ ${completedText} <span class="badge badge-light">${completedCount}</span>`;
+}
+
 function showDeleteTodoModal(todoId, userInput) {
   const modalBody = document.querySelector(".modal-body");
   modalBody.innerHTML = userInput;
@@ -172,12 +211,16 @@ function showDeleteTodoModal(todoId, userInput) {
 }
 
 function deleteTodo(todoId) {
-  todos = todos.filter((todo) => todo.id !== todoId);
-  const todoToDelete = document.getElementById(`todo-item-${todoId}`);
-  todoToDelete?.remove();
-  dismissModal();
-  updateCounts();
-  deleteToDoFromLocalStorage(todoId);
+  const todoStatus = todos.find((todo) => todo.id === todoId)?.status;
+  if (todoStatus) {
+    todos = todos.filter((todo) => todo.id !== todoId);
+    const todoToDelete = document.getElementById(`todo-item-${todoId}`);
+    todoToDelete?.remove();
+    dismissModal();
+    updateCounts();
+    setCountsAsBadge(todoStatus);
+    deleteToDoFromLocalStorage(todoId);
+  }
 }
 
 function dismissModal() {
@@ -272,47 +315,63 @@ function initTodoItem(userInputText, status, todoId) {
 
   statusDropdown.append(ulDropdownMenu);
 
-  // attach event listeners to Not Started, In Progress and Completed Buttons
-  liNotStartedBtn.addEventListener("click", function (event) {
-    const todo = todos.find((el) => el.id === +event.target.id);
-    if (todo.status !== "not-started") {
-      todo.status = "not-started";
-      const todoHTML = document.getElementById(`todo-item-${event.target.id}`);
-      document.getElementById("not-started-column").appendChild(todoHTML);
-      updateCounts(); // call updateCounts to refresh the counts
-      persistItemStatusInLocalStorage(+event.target.id, "not-started");
-    }
-  });
-  liInProgressBtn.addEventListener("click", function (event) {
-    const todo = todos.find((el) => el.id === +event.target.id);
-    if (todo.status !== "in-progress") {
-      todo.status = "in-progress";
-      const todoHTML = document.getElementById(`todo-item-${event.target.id}`);
-      document.getElementById("in-progress-column").appendChild(todoHTML);
-      updateCounts(); // call updateCounts to refresh the counts
-      persistItemStatusInLocalStorage(+event.target.id, "in-progress");
-    }
-  });
-  liOnHoldBtn.addEventListener("click", function (event) {
-    const todo = todos.find((el) => el.id === +event.target.id);
-    if (todo.status !== "on-hold") {
-      todo.status = "on-hold";
-      const todoHTML = document.getElementById(`todo-item-${event.target.id}`);
-      document.getElementById("on-hold-column").appendChild(todoHTML);
-    }
-    updateCounts(); // Update the counts after moving
-    persistItemStatusInLocalStorage(+event.target.id, "on-hold");
-  });
-  liCompletedBtn.addEventListener("click", function (event) {
-    const todo = todos.find((el) => el.id === +event.target.id);
-    if (todo.status !== "completed") {
-      todo.status = "completed";
-      const todoHTML = document.getElementById(`todo-item-${event.target.id}`);
-      document.getElementById("completed-column").appendChild(todoHTML);
-      updateCounts(); // call updateCounts to refresh the counts
-      persistItemStatusInLocalStorage(+event.target.id, "completed");
-    }
-  });
+    // attach event listeners to Not Started, In Progress and Completed Buttons
+    liNotStartedBtn.addEventListener("click", function (event) {
+      const todo = todos.find((el) => el.id === +event.target.id);
+      const oldStatus = todo.status;
+      if (todo.status !== "not-started") {
+        todo.status = "not-started";
+        const todoHTML = document.getElementById(
+          `todo-item-${event.target.id}`
+        );
+        document.getElementById("not-started-column").appendChild(todoHTML);
+        updateCounts(); // call updateCounts to refresh the counts
+        setCountsAsBadge(oldStatus);
+        persistItemStatusInLocalStorage(+event.target.id, "not-started");
+      }
+    });
+    liInProgressBtn.addEventListener("click", function (event) {
+      const todo = todos.find((el) => el.id === +event.target.id);
+      const oldStatus = todo.status;
+      if (todo.status !== "in-progress") {
+        todo.status = "in-progress";
+        const todoHTML = document.getElementById(
+          `todo-item-${event.target.id}`
+        );
+        document.getElementById("in-progress-column").appendChild(todoHTML);
+        updateCounts(); // call updateCounts to refresh the counts
+        setCountsAsBadge(oldStatus);
+        persistItemStatusInLocalStorage(+event.target.id, "in-progress");
+      }
+    });
+    liOnHoldBtn.addEventListener("click", function (event) {
+      const todo = todos.find((el) => el.id === +event.target.id);
+      const oldStatus = todo.status;
+      if (todo.status !== "on-hold") {
+        todo.status = "on-hold";
+        const todoHTML = document.getElementById(
+          `todo-item-${event.target.id}`
+        );
+        document.getElementById("on-hold-column").appendChild(todoHTML);
+      }
+      updateCounts(); // Update the counts after moving
+      setCountsAsBadge(oldStatus);
+      persistItemStatusInLocalStorage(+event.target.id, "on-hold");
+    });
+    liCompletedBtn.addEventListener("click", function (event) {
+      const todo = todos.find((el) => el.id === +event.target.id);
+      const oldStatus = todo.status;
+      if (todo.status !== "completed") {
+        todo.status = "completed";
+        const todoHTML = document.getElementById(
+          `todo-item-${event.target.id}`
+        );
+        document.getElementById("completed-column").appendChild(todoHTML);
+        updateCounts(); // call updateCounts to refresh the counts
+        setCountsAsBadge(oldStatus);
+        persistItemStatusInLocalStorage(+event.target.id, "completed");
+      }
+    });
 
   // Append the new list item to the existing list
   // TODO - organize it by status of input item
