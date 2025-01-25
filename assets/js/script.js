@@ -91,7 +91,7 @@ const doneTab = document.getElementById("done-tab");
 const notStartedColumn = document.getElementById("not-started-column");
 const inProgressColumn = document.getElementById("in-progress-column");
 const onHoldColumn = document.getElementById("on-hold-column");
-const doneColumn = document.getElementById("completed-column");
+const doneColumn = document.getElementById("done-column");
 
 notStartedTab.addEventListener('click', function (event) {
 
@@ -134,7 +134,7 @@ doneTab.addEventListener('click', function (event) {
   onHoldColumn.parentElement.classList.add("hide");
   doneColumn.parentElement.classList.remove("hide");
 
-  setCountsAsBadge('completed');
+  setCountsAsBadge('done');
 });
 
 function updateCounts() {
@@ -148,8 +148,8 @@ function updateCounts() {
   const onHoldCount = document.querySelectorAll(
     "#on-hold-column .todo-item"
   ).length;
-  const completedCount = document.querySelectorAll(
-    "#completed-column .todo-item"
+  const doneCount = document.querySelectorAll(
+    "#done-column .todo-item"
   ).length;
 
   // update the text content of the span elements with the class "column-count"
@@ -158,7 +158,7 @@ function updateCounts() {
   document.querySelector(".working-on-it .column-count").textContent =
     inProgressCount;
   document.querySelector(".on-hold .column-count").textContent = onHoldCount;
-  document.querySelector(".done .column-count").textContent = completedCount;
+  document.querySelector(".done .column-count").textContent = doneCount;
 }
 
 function setCountsAsBadge(status) {
@@ -172,14 +172,14 @@ function setCountsAsBadge(status) {
     const onHoldCount = document.querySelectorAll(
       "#on-hold-column .todo-item"
     ).length;
-    const completedCount = document.querySelectorAll(
-      "#completed-column .todo-item"
+    const doneCount = document.querySelectorAll(
+      "#done-column .todo-item"
     ).length;
 
     let notStartedText = '';
     let inProgressText = '';
     let onHoldText = '';
-    let completedText = '';
+    let doneText = '';
 
     if (status === 'not-started') {
       notStartedText = "Not Started";
@@ -187,8 +187,8 @@ function setCountsAsBadge(status) {
       inProgressText = "Working On It";
     } else if (status === 'on-hold') {
       onHoldText = "On Hold";
-    } else if (status === 'completed') {
-      completedText = "Done";
+    } else if (status === 'done') {
+      doneText = "Done";
     }
 
     document.querySelector("#not-started-tab").innerHTML = 
@@ -198,7 +198,7 @@ function setCountsAsBadge(status) {
     document.querySelector("#on-hold-tab").innerHTML =
       `🛑 ${onHoldText} <span class="badge badge-light">${onHoldCount}</span>`;
     document.querySelector("#done-tab").innerHTML =
-      `✅ ${completedText} <span class="badge badge-light">${completedCount}</span>`;
+      `✅ ${doneText} <span class="badge badge-light">${doneCount}</span>`;
 }
 
 function showDeleteTodoModal(todoId, userInput) {
@@ -302,20 +302,20 @@ function initTodoItem(userInputText, status, todoId) {
   liOnHoldBtn.appendChild(aOnHoldBtn);
   ulDropdownMenu.appendChild(liOnHoldBtn);
 
-  // creates Completed Btn
-  const liCompletedBtn = document.createElement("li");
-  liCompletedBtn.setAttribute("id", "completed-btn");
-  const aCompletedBtn = document.createElement("a");
-  aCompletedBtn.setAttribute("id", todoId);
-  aCompletedBtn.setAttribute("class", "dropdown-item");
-  aCompletedBtn.setAttribute("href", "#");
-  aCompletedBtn.textContent = "Done";
-  liCompletedBtn.appendChild(aCompletedBtn);
-  ulDropdownMenu.appendChild(liCompletedBtn);
+  // creates Done Btn
+  const liDoneBtn = document.createElement("li");
+  liDoneBtn.setAttribute("id", "done-btn");
+  const aDoneBtn = document.createElement("a");
+  aDoneBtn.setAttribute("id", todoId);
+  aDoneBtn.setAttribute("class", "dropdown-item");
+  aDoneBtn.setAttribute("href", "#");
+  aDoneBtn.textContent = "Done";
+  liDoneBtn.appendChild(aDoneBtn);
+  ulDropdownMenu.appendChild(liDoneBtn);
 
   statusDropdown.append(ulDropdownMenu);
 
-    // attach event listeners to Not Started, In Progress and Completed Buttons
+    // attach event listeners to Not Started, In Progress and Done Buttons
     liNotStartedBtn.addEventListener("click", function (event) {
       const todo = todos.find((el) => el.id === +event.target.id);
       const oldStatus = todo.status;
@@ -358,18 +358,18 @@ function initTodoItem(userInputText, status, todoId) {
       setCountsAsBadge(oldStatus);
       persistItemStatusInLocalStorage(+event.target.id, "on-hold");
     });
-    liCompletedBtn.addEventListener("click", function (event) {
+    liDoneBtn.addEventListener("click", function (event) {
       const todo = todos.find((el) => el.id === +event.target.id);
       const oldStatus = todo.status;
-      if (todo.status !== "completed") {
-        todo.status = "completed";
+      if (todo.status !== "done") {
+        todo.status = "done";
         const todoHTML = document.getElementById(
           `todo-item-${event.target.id}`
         );
-        document.getElementById("completed-column").appendChild(todoHTML);
+        document.getElementById("done-column").appendChild(todoHTML);
         updateCounts(); // call updateCounts to refresh the counts
         setCountsAsBadge(oldStatus);
-        persistItemStatusInLocalStorage(+event.target.id, "completed");
+        persistItemStatusInLocalStorage(+event.target.id, "done");
       }
     });
 
@@ -428,19 +428,19 @@ function updateProgressBar() {
     const totalTasks = storedData.length;
 
     const notStartedCount = storedData.filter(
-      (todos) => todo.status === "not-started"
+      (todo) => todo.status === "not-started"
     ).length;
 
     const workingOnItCount = storedData.filter(
-      (todos) => todo.status === "in-progress"
+      (todo) => todo.status === "in-progress"
     ).length;
 
     const onHoldCount = storedData.filter(
-      (todos) => todo.status === "on-hold"
+      (todo) => todo.status === "on-hold"
     ).length;
 
     const doneCount = storedData.filter(
-      (todos) => todo.status === "completed"
+      (todo) => todo.status === "done"
     ).length;
 
     document.querySelectorAll("progress-bar");

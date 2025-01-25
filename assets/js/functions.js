@@ -9,8 +9,8 @@ function updateCounts() {
   const onHoldCount = document.querySelectorAll(
     "#on-hold-column .todo-item"
   ).length;
-  const completedCount = document.querySelectorAll(
-    "#completed-column .todo-item"
+  const doneCount = document.querySelectorAll(
+    "#done-column .todo-item"
   ).length;
 
   // update the text content of the span elements with the class "column-count"
@@ -19,5 +19,5 @@ function updateCounts() {
   document.querySelector(".working-on-it .column-count").textContent =
     inProgressCount;
   document.querySelector(".on-hold .column-count").textContent = onHoldCount;
-  document.querySelector(".done .column-count").textContent = completedCount;
+  document.querySelector(".done .column-count").textContent = doneCount;
 }
