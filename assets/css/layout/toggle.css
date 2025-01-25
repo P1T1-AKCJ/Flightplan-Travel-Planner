@@ -1,42 +1,41 @@
 /* LIGHT AND DARK MODE CSS HERE */
 
 :root {
-  ---medium: #141414;
-  ---dark: #000000;
-  ---lightgrey: #3c3c3c;
-  ---accent: rgb(80, 160, 255);
-
+  --medium: #141414;
+  --dark: #000000;
+  --lightgrey: #3c3c3c;
+  --accent: rgb(80, 160, 255);
 }
 
 #toggle {
-    font-size: 1.52em;
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    text-shadow: 0px 0px .5rem var(--light-accent);
-  }
+  font-size: 1.52em;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-shadow: 0px 0px .5rem var(--light-accent);
+}
 
 body.dark {
-background-color: var(---medium);
-color: var(---accent);
+  background-color: var(--medium);
+  color: var(--accent);
 }
 
 body.dark header {
-  background-color: var(---medium);
+  background-color: var(--medium);
   box-shadow: 0px 4px 10px rgb(0, 0, 0);
   border-color: black;
 }
 
 body.dark header h3 {
-  color: var(---accent)
+  color: var(--accent)
 }
 
 body.dark .nav-link {
-  background-color: var(---lightgrey);
-  border-color: var(---lightgrey);
-  color: var(---accent);
+  background-color: var(--lightgrey);
+  border-color: var(--lightgrey);
+  color: var(--accent);
 }
 
 body.dark .nav-link:hover {
@@ -44,27 +43,30 @@ body.dark .nav-link:hover {
 }
 
 body.dark .banner {
-background-color: var(---lightgrey);
+  background-color: var(--lightgrey);
+}
 
+body.dark .column {
+  background-color: var(--lightgrey);
 }
 
 body.dark .card {
-  background-color: var(---lightgrey);
+  background-color: var(--lightgrey);
 }
 
 body.dark .card:hover {
-box-shadow: 2px 2px 5px rgba(80, 159, 255, 0.232);
+  box-shadow: 2px 2px 5px rgba(80, 159, 255, 0.232);
 }
 
 body.dark .card p {
-color: var(---accent);
+  color: var(--accent);
 }
 
 body.dark footer {
-background-color: var(---dark);
+  background-color: var(--dark);
 }
 
 body.dark .todo-list {
-background-color: var(---lightgrey);
+  background-color: var(--lightgrey);
 }
 
