@@ -33,6 +33,8 @@ window.addEventListener("resize", function (event) {
 
 renderDataFromLocalStorage();
 
+todos = getDataFromLocalStorage();
+
 // form submission
 document
   .getElementById("addTaskForm")
@@ -137,79 +139,6 @@ doneTab.addEventListener('click', function (event) {
   setCountsAsBadge('done');
 });
 
-function updateCounts() {
-  // get the count of tasks in each column
-  const notStartedCount = document.querySelectorAll(
-    "#not-started-column .todo-item"
-  ).length;
-  const inProgressCount = document.querySelectorAll(
-    "#in-progress-column .todo-item"
-  ).length;
-  const onHoldCount = document.querySelectorAll(
-    "#on-hold-column .todo-item"
-  ).length;
-  const doneCount = document.querySelectorAll(
-    "#done-column .todo-item"
-  ).length;
-
-  // update the text content of the span elements with the class "column-count"
-  document.querySelector(".not-started .column-count").textContent =
-    notStartedCount;
-  document.querySelector(".working-on-it .column-count").textContent =
-    inProgressCount;
-  document.querySelector(".on-hold .column-count").textContent = onHoldCount;
-  document.querySelector(".done .column-count").textContent = doneCount;
-}
-
-function setCountsAsBadge(status) {
-    // get the count of tasks in each column
-    const notStartedCount = document.querySelectorAll(
-      "#not-started-column .todo-item"
-    ).length;
-    const inProgressCount = document.querySelectorAll(
-      "#in-progress-column .todo-item"
-    ).length;
-    const onHoldCount = document.querySelectorAll(
-      "#on-hold-column .todo-item"
-    ).length;
-    const doneCount = document.querySelectorAll(
-      "#done-column .todo-item"
-    ).length;
-
-    let notStartedText = '';
-    let inProgressText = '';
-    let onHoldText = '';
-    let doneText = '';
-
-    if (status === 'not-started') {
-      notStartedText = "Not Started";
-    } else if (status === 'in-progress') {
-      inProgressText = "Working On It";
-    } else if (status === 'on-hold') {
-      onHoldText = "On Hold";
-    } else if (status === 'done') {
-      doneText = "Done";
-    }
-
-    document.querySelector("#not-started-tab").innerHTML = 
-      `🕒 ${notStartedText} <span class="badge badge-light">${notStartedCount}</span>`;
-    document.querySelector("#in-progress-tab").innerHTML =
-      `⚙️ ${inProgressText} <span class="badge badge-light">${inProgressCount}</span>`;
-    document.querySelector("#on-hold-tab").innerHTML =
-      `🛑 ${onHoldText} <span class="badge badge-light">${onHoldCount}</span>`;
-    document.querySelector("#done-tab").innerHTML =
-      `✅ ${doneText} <span class="badge badge-light">${doneCount}</span>`;
-}
-
-function showDeleteTodoModal(todoId, userInput) {
-  const modalBody = document.querySelector(".modal-body");
-  modalBody.innerHTML = userInput;
-  const deleteTodoBtn = document.getElementById("delete-todo-btn");
-  deleteTodoBtn.addEventListener("click", function () {
-    deleteTodo(todoId);
-  });
-}
-
 function deleteTodo(todoId) {
   const todoStatus = todos.find((todo) => todo.id === todoId)?.status;
   if (todoStatus) {
@@ -220,32 +149,6 @@ function deleteTodo(todoId) {
     updateCounts();
     setCountsAsBadge(todoStatus);
     deleteToDoFromLocalStorage(todoId);
-  }
-}
-
-function dismissModal() {
-  const dismissModalBtn = document.querySelector(".dismiss-modal");
-  dismissModalBtn.click();
-}
-
-function storeUserInput(userInputObj) {
-  const userInputList = JSON.parse(localStorage.getItem("userInputList"));
-  if (userInputList) {
-    const storedData = JSON.parse(localStorage.getItem("userInputList"));
-    storedData.push(userInputObj);
-    localStorage.setItem("userInputList", JSON.stringify(storedData));
-  } else {
-    localStorage.setItem("userInputList", JSON.stringify([userInputObj]));
-  }
-}
-
-function renderDataFromLocalStorage() {
-  const storedData = JSON.parse(localStorage.getItem("userInputList"));
-  if (storedData) {
-    todos = storedData;
-    storedData.forEach((userInputObj) => {
-      initTodoItem(userInputObj.text, userInputObj.status, userInputObj.id);
-    });
   }
 }
 
@@ -395,28 +298,6 @@ function initTodoItem(userInputText, status, todoId) {
     showDeleteTodoModal(todoId, userInputText);
   });
   divTodo.appendChild(deleteBtn);
-}
-
-function deleteToDoFromLocalStorage(id) {
-  const storedData = JSON.parse(localStorage.getItem("userInputList"));
-  const newStoredData = storedData.filter((data) => data.id !== id);
-  localStorage.setItem("userInputList", JSON.stringify(newStoredData));
-}
-
-function persistItemStatusInLocalStorage(id, newStatus) {
-  const storedData = JSON.parse(localStorage.getItem("userInputList"));
-  const toDo = storedData.find((data) => data.id === id);
-  toDo.status = newStatus;
-  localStorage.setItem("userInputList", JSON.stringify(storedData));
-}
-
-function storeToDoCount() {
-  const currentTodoId = +localStorage.getItem("todoId");
-  if (currentTodoId >= 0) {
-    localStorage.setItem("todoId", currentTodoId + 1);
-  } else {
-    localStorage.setItem("todoId", 0);
-  }
 }
 
 // Progress Bar
