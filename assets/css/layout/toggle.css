@@ -66,7 +66,75 @@ body.dark footer {
   background-color: var(--dark);
 }
 
+
+
+/* about us page card headers */ 
+body.dark .kirstin {
+  background-color: #add2ff;
+
+}
+
+body.dark .antonina {
+  background-color:  #ffd592;
+
+}
+
+body.dark .jaden {
+  background-color: #ff94a0;
+}
+
+body.dark .chris {
+  background-color: #93ffc0;
+}
+
+/*column styling*/
+
+body.dark .column:hover {
+  box-shadow: 0px 5px 10px rgb(80, 160, 255, 0.2);
+}
+
+body.dark .dropdown .btn {
+  background-color: var(--medium);
+}
+
+body.dark .delete-btn {
+   background-color: var(--medium);
+}
+
+body.dark .dropdown .btn:hover {
+  background-color: var(--accent);
+}
+
+body.dark .delete-btn:hover {
+  background-color: var(--accent);
+}
+
+/*main page column headers*/
+body.dark .column-header.not-started {
+  background-color: #add2ff;
+}
+
+body.dark .column-header.working-on-it {
+  background-color: #ffd592 ;
+}
+
+body.dark .column-header.on-hold {
+  background-color: #ff94a0;
+}
+
+body.darl .column-header.done {
+  background-color: #93ffc0;
+}
+
+/*styling for todo items*/
 body.dark .todo-list {
   background-color: var(--lightgrey);
 }
 
+body.dark .todo-item {
+  background-color: var(--lightgrey);
+}
+
+body.dark .todo-text {
+  color: white;
+}

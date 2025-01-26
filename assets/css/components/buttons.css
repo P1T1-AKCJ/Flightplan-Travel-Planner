@@ -54,11 +54,12 @@ margin-left: 0.3em;
   
 .delete-btn:hover {
 background-color: #d7717d;
+}
 
 .btn-close {
     color: black;
 }
-}
+
   
 .btn-close:active,
 .btn-close:focus {

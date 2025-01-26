@@ -21,6 +21,10 @@ header h3 {
 footer {
   display: flex;
   flex-direction: row;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   justify-content: space-evenly;
   background-color: var(--brightblue);
   text-align: center;
@@ -33,10 +37,11 @@ footer {
 .banner {
   background-color: var(--brightblue);
   text-align: center;
-  padding: 1px;
+  padding: 1px 0px 1px 0px;
   color: white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   opacity: 80%;
+  width: 100%;
 }
 
 /* Meet the team banner */
@@ -49,12 +54,12 @@ footer {
     url("../wavebanner.jpg");
   background-size: cover;
   text-align: center;
-  padding: 20px;
+  padding: 10px 0px 10px 0px;
   color: var(--white);
   opacity: 80%;
   font-family: "Pacifico", serif;
   font-size: larger;
-
+  width: 100%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -94,11 +99,11 @@ footer {
 }
 
 .antonina {
-  background-color: #8b99aa;
+  background-color: #f3c57d;
 }
 
 .kirstin {
-  background-color: #f3c57d;
+  background-color: #8b99aa;
 }
 
 .jaden {
@@ -115,6 +120,7 @@ footer {
   font-weight: 400;
   opacity: 90%;
   text-align: center;
+  padding: 10px;
 }
 .card img {
   width: 100%;
