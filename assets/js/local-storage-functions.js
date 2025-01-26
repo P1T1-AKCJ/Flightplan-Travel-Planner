@@ -38,12 +38,19 @@ function storeToDoCount() {
 }
 
 function storeUserInput(userInputObj) {
-    const userInputList = JSON.parse(localStorage.getItem("userInputList"));
-    if (userInputList) {
-      const storedData = JSON.parse(localStorage.getItem("userInputList"));
+  const userInputList = JSON.parse(localStorage.getItem("userInputList"));
+  if (userInputList) {
+    const storedData = JSON.parse(localStorage.getItem("userInputList"));
+    const todoItem = storedData.find((data) => data.id === userInputObj.id);
+    if (todoItem) {
+      const editedStoredData = storedData.filter((data) => data.id !== userInputObj.id);
+      editedStoredData.push(userInputObj);
+      localStorage.setItem("userInputList", JSON.stringify(editedStoredData));
+    } else {
       storedData.push(userInputObj);
       localStorage.setItem("userInputList", JSON.stringify(storedData));
-    } else {
-      localStorage.setItem("userInputList", JSON.stringify([userInputObj]));
     }
+  } else {
+    localStorage.setItem("userInputList", JSON.stringify([userInputObj]));
+  }
 }

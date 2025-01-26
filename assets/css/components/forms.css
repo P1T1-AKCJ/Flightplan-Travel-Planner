@@ -121,6 +121,10 @@ form#addTaskForm input[type="text"]:focus {
   visibility: visible;
 }
 
+#edit-user-input {
+  width: 95%;
+}
+
 @media (max-width: 768px) {
   form#addTaskForm {
     width: 100%;

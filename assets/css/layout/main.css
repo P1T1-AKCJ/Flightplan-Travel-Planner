@@ -8,20 +8,9 @@ main {
   gap: 20px;
 }
 
-@media (max-width: 768px) {
-  .main-table {
-    flex-direction: column;
-    align-items: center;
-  }
-  .column {
-    width: 80%;
-    margin: 0 0 1em;
-  }
-}
-
 .column {
   width: 25%;
-  height: 1000px;
+  height: 85vh;
   margin: 0.2em;
   border-radius: 10px;
   background-color: #ffffff;
@@ -92,4 +81,21 @@ main {
   font-size: 0.9em;
   font-family: sans-serif;
   margin-top: .5%;
+}
+
+@media (max-width: 768px) {
+  .main-table {
+    flex-direction: column;
+    align-items: center;
+  }
+  .column {
+    margin: 0 0 1em;
+  }
+}
+
+@media (max-width: 844px) {
+  .column {
+    width: 100%;
+    margin: 1em;
+  }
 }
