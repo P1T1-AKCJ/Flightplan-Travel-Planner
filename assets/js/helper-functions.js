@@ -67,9 +67,9 @@ function dismissModal() {
   dismissModalBtn.click();
 }
 
-function showDeleteTodoModal(todoId, userInput) {
-  const modalBody = document.querySelector(".modal-body");
-  modalBody.innerHTML = userInput;
+function showDeleteTodoModal(todoId, event) {
+  const modalBody = document.querySelector(".delete-todo-modal-body");
+  modalBody.innerHTML = event.target.parentElement.parentElement.firstChild.innerHTML;
   const deleteTodoBtn = document.getElementById("delete-todo-btn");
   deleteTodoBtn.addEventListener("click", function () {
     deleteTodo(todoId);
@@ -98,6 +98,26 @@ function deleteTodo(todoId) {
    deleteToDoFromLocalStorage(todoId);
    updateProgressBar();
  }
+}
+
+function showEditTodoModal(problem) {
+  const modalTitle = document.querySelector(".edit-todo-modal-title");
+  const modalBody = document.querySelector(".edit-todo-modal-body");
+  const modalBtn = document.querySelector(".edit-todo-modal-btn");
+  if (problem === "empty-input") {
+    modalTitle.innerText = "You cannot save empty field!";
+    modalBody.innerText = "Please, add text to the field."
+  } else if (problem === "editing-another-field") {
+    modalTitle.innerText = "You are currently editing another field!";
+    modalBody.innerText = "Please, finish your previous editing. After that you can start editing other fields."
+  }
+  body.style.opacity = "80%";
+  const editTodoModal = document.querySelector(".edit-todo-modal");
+  editTodoModal.style.display = "block";
+
+  modalBtn.addEventListener("click", function() {
+    editTodoModal.style.display = "none";
+  });
 }
 
 function createStatusDropdownMenu(ulDropdownMenu, todoId) {

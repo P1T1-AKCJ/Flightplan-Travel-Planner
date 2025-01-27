@@ -106,6 +106,37 @@
 
     <main>
       <div
+          class="modal edit-todo-modal"
+          role="dialog"
+          id="todoModalBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="todoModalBackdropLabel"
+        >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title edit-todo-modal-title"
+                id="todoModalBackdropLabel"
+              ></h5>
+            </div>
+            <div class="modal-body edit-todo-modal-body">
+              <p></p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                id="edit-todo-modal-btn"
+                class="btn btn-secondary edit-todo-modal-btn "
+                data-dismiss="modal"
+              >Ok</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
         class="modal fade delete-todo-modal"
         id="staticBackdrop"
         data-bs-backdrop="static"
@@ -119,7 +150,6 @@
               <h1 class="modal-title fs-5" id="staticBackdropLabel">
                 Are you sure you want to permanently remove this item?
               </h1>
-
               <button
                 type="button"
                 class="btn-close"
@@ -127,7 +157,7 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body"></div>
+            <div class="modal-body delete-todo-modal-body"></div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -136,7 +166,11 @@
               >
                 Cancel
               </button>
-              <button type="button" class="btn btn-danger" id="delete-todo-btn">
+              <button
+                type="button"
+                class="btn btn-danger"
+                id="delete-todo-btn"
+              >
                 Delete
               </button>
             </div>

@@ -22,42 +22,38 @@ function initTodoItem(userInputText, status, todoId) {
       </svg>
     </button>
   `;
-  editBtn.addEventListener('click', function () {
+  editBtn.addEventListener('click', function() {
     const storedEditModeAndId = JSON.parse(localStorage.getItem("edit-mode"));
     const todoLi = document.getElementById(`todo-item-${todoId}`);
     if (!storedEditModeAndId) {
+      setEditMode();
       localStorage.setItem("edit-mode", [JSON.stringify({id: todoId, editMode: true})]);
       todoLi.removeChild(todoLi.firstElementChild);
       const editText = document.createElement("div");
       editText.innerHTML = `<div class="input-group flex-nowrap"></div>`;
-
       const editUserInput = document.createElement("input");
       editUserInput.setAttribute("id", "edit-user-input");
       editUserInput.setAttribute("type", "text");
       editUserInput.setAttribute("class", "form-control");
       editUserInput.setAttribute("aria-label", "Username");
       editUserInput.setAttribute("aria-describedby", "addon-wrapping");
-      editUserInput.value = userInputText;
-
-      editText.append(editUserInput);
-      todoLi.insertBefore(editText, todoLi.firstChild);
-
-      // handle enter key to finish editing
-      editUserInput.addEventListener("keydown", function (event) {
+      const todo = todos.find((todo) => todo.id === todoId);
+      editUserInput.value = todo.text;
+  
+      editUserInput.addEventListener("keypress", function(event) {
+        const newUserInputValue = document.getElementById("edit-user-input").value;
         if (event.key === "Enter") {
+          if (newUserInputValue.length === 0) {
+            showEditTodoModal("empty-input");
+            return;
+          }
+          removeEditMode();
           localStorage.removeItem("edit-mode");
-          const newUserInputValue = editUserInput.value;
-
-          // remove the input field
           todoLi.removeChild(todoLi.firstElementChild);
-
-          // create a new display <div> with the updated text
-          const updatedTextDiv = document.createElement("div");
-          updatedTextDiv.setAttribute("class", "todo-text");
-          updatedTextDiv.textContent = newUserInputValue;
-          divTodo.insertBefore(updatedTextDiv, divTodo.firstChild);
-
-          // persist the updated text
+          const inputText = document.createElement("div");
+          inputText.setAttribute("class", "todo-text");
+          inputText.textContent = newUserInputValue; // set new user input
+          divTodo.insertBefore(inputText, divTodo.firstChild);
           storeUserInput({
             id: todoId,
             text: newUserInputValue,
@@ -65,11 +61,17 @@ function initTodoItem(userInputText, status, todoId) {
           });
         }
       });
-
+      editText.append(editUserInput);
+      todoLi.insertBefore(editText, todoLi.firstChild);
     } else {
       if (storedEditModeAndId.id === todoId && storedEditModeAndId.editMode === true) {
-        localStorage.removeItem("edit-mode");
         const newUserInputValue = document.getElementById("edit-user-input").value;
+        if (newUserInputValue.length === 0) {
+          showEditTodoModal("empty-input");
+          return;
+        }
+        removeEditMode();
+        localStorage.removeItem("edit-mode");
         todoLi.removeChild(todoLi.firstElementChild);
         const inputText = document.createElement("div");
         inputText.setAttribute("class", "todo-text");
@@ -80,9 +82,9 @@ function initTodoItem(userInputText, status, todoId) {
           text: newUserInputValue,
           status: status
         });
-
       } else if (storedEditModeAndId.id !== todoId && storedEditModeAndId.editMode === true) {
-        alert("You are currently editing another field. After you finish your prevous editing you can continue with other fields.")
+        showEditTodoModal("editing-another-field");
+        return;
       }
     }
   });
@@ -113,7 +115,6 @@ function initTodoItem(userInputText, status, todoId) {
   document.getElementById("inputField").value = "";
 
   updateCounts(); // Update counts
-  updateProgressBar(); // Update progress bar
 
   // delete button
   const deleteBtn = document.createElement("div");
@@ -126,7 +127,7 @@ function initTodoItem(userInputText, status, todoId) {
     </button>
   `;
   deleteBtn.addEventListener("click", function (event) {
-    showDeleteTodoModal(todoId, userInputText);
+    showDeleteTodoModal(todoId, event);
   });
   divTodo.appendChild(deleteBtn);
 }

@@ -27,6 +27,7 @@ function deleteToDoFromLocalStorage(id) {
     const storedData = JSON.parse(localStorage.getItem("userInputList"));
     const newStoredData = storedData.filter((data) => data.id !== id);
     localStorage.setItem("userInputList", JSON.stringify(newStoredData));
+    todos = newStoredData;
 }
 
 function storeToDoCount() {
@@ -44,14 +45,16 @@ function storeUserInput(userInputObj) {
     const storedData = JSON.parse(localStorage.getItem("userInputList"));
     const todoItem = storedData.find((data) => data.id === userInputObj.id);
     if (todoItem) {
-      const editedStoredData = storedData.filter((data) => data.id !== userInputObj.id);
-      editedStoredData.push(userInputObj);
-      localStorage.setItem("userInputList", JSON.stringify(editedStoredData));
+      todoItem.text = userInputObj.text;
+      localStorage.setItem("userInputList", JSON.stringify(storedData));
+      todos = storedData;
     } else {
       storedData.push(userInputObj);
       localStorage.setItem("userInputList", JSON.stringify(storedData));
+      todos = storedData;
     }
   } else {
     localStorage.setItem("userInputList", JSON.stringify([userInputObj]));
+    todos = storedData;
   }
 }
