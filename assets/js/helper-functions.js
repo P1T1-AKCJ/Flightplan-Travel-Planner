@@ -52,7 +52,7 @@ function setCountsAsBadge(status) {
     doneText = "Done";
   }
 
-  document.querySelector("#not-started-tab").innerHTML = 
+  document.querySelector("#not-started-tab").innerHTML =
     `🕒 ${notStartedText} <span class="badge badge-light">${notStartedCount}</span>`;
   document.querySelector("#in-progress-tab").innerHTML =
     `⚙️ ${inProgressText} <span class="badge badge-light">${inProgressCount}</span>`;
@@ -77,16 +77,27 @@ function showDeleteTodoModal(todoId, userInput) {
 }
 
 function deleteTodo(todoId) {
-  const todoStatus = todos.find((todo) => todo.id === todoId)?.status;
-  if (todoStatus) {
-    todos = todos.filter((todo) => todo.id !== todoId);
-    const todoToDelete = document.getElementById(`todo-item-${todoId}`);
-    todoToDelete?.remove();
-    dismissModal();
-    updateCounts();
-    setCountsAsBadge(todoStatus);
-    deleteToDoFromLocalStorage(todoId);
+
+  // if the user is deleting the todo that was being edited, remove the 'edit-mode' key
+  const storedEditModeAndId = JSON.parse(localStorage.getItem("edit-mode"));
+  if (storedEditModeAndId) {
+    // compare the stored edit item's ID to the item being deleted
+    if (storedEditModeAndId.id === todoId && storedEditModeAndId.editMode) {
+      localStorage.removeItem("edit-mode");
+    }
   }
+
+ const todoStatus = todos.find((todo) => todo.id === todoId)?.status;
+ if (todoStatus) {
+   todos = todos.filter((todo) => todo.id !== todoId);
+   const todoToDelete = document.getElementById(`todo-item-${todoId}`);
+   todoToDelete?.remove();
+   dismissModal();
+   updateCounts();
+   setCountsAsBadge(todoStatus);
+   deleteToDoFromLocalStorage(todoId);
+   updateProgressBar();
+ }
 }
 
 function createStatusDropdownMenu(ulDropdownMenu, todoId) {
@@ -144,12 +155,13 @@ function createStatusDropdownMenu(ulDropdownMenu, todoId) {
         `todo-item-${event.target.id}`
       );
       document.getElementById("not-started-column").appendChild(todoHTML);
-      updateCounts(); // call updateCounts to refresh the counts
+      updateCounts();// call updateCounts to refresh the counts
       setCountsAsBadge(oldStatus);
       persistItemStatusInLocalStorage(+event.target.id, "not-started");
+      updateProgressBar();
     }
   });
-  
+
   liInProgressBtn.addEventListener("click", function (event) {
     const todo = todos.find((el) => el.id === +event.target.id);
     const oldStatus = todo.status;
@@ -162,9 +174,10 @@ function createStatusDropdownMenu(ulDropdownMenu, todoId) {
       updateCounts(); // call updateCounts to refresh the counts
       setCountsAsBadge(oldStatus);
       persistItemStatusInLocalStorage(+event.target.id, "in-progress");
+      updateProgressBar();
     }
   });
-  
+
   liOnHoldBtn.addEventListener("click", function (event) {
     const todo = todos.find((el) => el.id === +event.target.id);
     const oldStatus = todo.status;
@@ -178,8 +191,9 @@ function createStatusDropdownMenu(ulDropdownMenu, todoId) {
     updateCounts(); // Update the counts after moving
     setCountsAsBadge(oldStatus);
     persistItemStatusInLocalStorage(+event.target.id, "on-hold");
+    updateProgressBar();
   });
-  
+
   liDoneBtn.addEventListener("click", function (event) {
     const todo = todos.find((el) => el.id === +event.target.id);
     const oldStatus = todo.status;
@@ -192,6 +206,7 @@ function createStatusDropdownMenu(ulDropdownMenu, todoId) {
       updateCounts(); // call updateCounts to refresh the counts
       setCountsAsBadge(oldStatus);
       persistItemStatusInLocalStorage(+event.target.id, "done");
+      updateProgressBar();
     }
   });
 }

@@ -7,14 +7,87 @@
   --accent: rgb(80, 160, 255);
 }
 
+/* Base toggle styles */
 #toggle {
   font-size: 1.52em;
   margin: 0;
-  padding: 0;
+  padding: 4px; /* Gives some clickable padding */
   background: transparent;
   border: none;
   cursor: pointer;
-  text-shadow: 0px 0px .5rem var(--light-accent);
+  text-shadow: 0px 0px 0.5rem var(--light-accent);
+  border-radius: 50%; /* Rounded look */
+  transition: background-color 0.2s ease;
+}
+
+/* Light mode hover */
+body.light #toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode hover */
+body.dark #toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+main.dark {
+  background-color: #171717;
+}
+
+body.dark header {
+  background-color: #202124;
+  box-shadow: 0px 4px 10px rgb(0, 0, 0);
+  border-color: black;
+  opacity: 100;
+}
+
+body.dark form#addTaskForm input[type="text"] {
+  background-color: #4d5156;
+  border-color: #303134;
+  color: #ffffff
+}
+
+body.dark form#addTaskForm input[type="text"]::placeholder {
+  color: #bfbfbf;
+}
+
+body.dark form#addTaskForm input[type="text"]:hover {
+  background-color: #5f6368;
+  color: #ffffff;
+}
+
+body.dark form#addTaskForm input[type="text"]:focus {
+  border-color: var(--brightBlue);
+  background-color: #5f6368;
+}
+
+body.dark .clear-icon {
+  color: #9aa0a6;
+}
+
+body.dark .clear-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #e8eaed;
+}
+
+body.dark .clear-icon .tooltip {
+  background-color: #3c4043;
+  color: #e8eaed;
+}
+
+body.dark .add-todo-btn {
+  background-color: var(--brightBlue);
+  border-color: #303134;
+  height: 97%;
+}
+
+body.dark .add-todo-btn:hover {
+  background-color: var(--nightBlueHover);
+  border-color: #303134;
+}
+
+body.dark .nav-icon {
+  fill: #e0e0e1; /* whatever color you like */
 }
 
 body.dark {
@@ -22,24 +95,20 @@ body.dark {
   color: var(--accent);
 }
 
-body.dark header {
-  background-color: var(--medium);
-  box-shadow: 0px 4px 10px rgb(0, 0, 0);
-  border-color: black;
-}
-
 body.dark header h3 {
   color: var(--accent)
 }
 
 body.dark .nav-link {
-  background-color: var(--lightgrey);
+  background-color: #303134;
   border-color: var(--lightgrey);
-  color: var(--accent);
+  color: #999da9;
 }
 
 body.dark .nav-link:hover {
-  background-color: #509fff6a;
+  background-color: #3d3f43;;
+  color: #ffffff;
+  border-color: #5f6368;
 }
 
 body.dark .banner {
@@ -68,7 +137,7 @@ body.dark footer {
 
 
 
-/* about us page card headers */ 
+/* about us page card headers */
 body.dark .kirstin {
   background-color: #add2ff;
 
@@ -137,4 +206,203 @@ body.dark .todo-item {
 
 body.dark .todo-text {
   color: white;
+}
+
+body.dark .dropdown .btn {
+  background-color: #333;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  box-shadow: none;
+  color: #bbb;
+  font-size: 28px;
+}
+
+body.dark .dropdown .btn:hover {
+  background-color: #444;
+}
+
+body.dark .dropdown-menu {
+  background-color: #444;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border: none;
+  margin-top: 8px;
+}
+
+body.dark .dropdown .btn::after {
+  color: #bbb;
+}
+
+body.dark .delete-btn,
+body.dark .edit-btn {
+  background-color: #333;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  box-shadow: none;
+  color: #bbb;
+  font-size: 14px;
+  margin-left: 0.3em;
+}
+
+body.dark .edit-btn {
+  margin-right: 0.3em;
+}
+
+body.dark .edit-btn:hover,
+body.dark .delete-btn:hover {
+  background-color: #444;
+}
+
+body.dark .btn-edit,
+body.dark .btn-edit:hover {
+  color: #bbb;
+}
+
+body.dark .btn-edit:focus,
+body.dark .btn-edit:active,
+body.dark .btn-edit:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.dark .btn-close {
+  color: #bbb;
+}
+
+body.dark .btn-close:active,
+body.dark .btn-close:focus {
+  box-shadow: none;
+}
+
+body.dark .dropdown-menu {
+  background-color: #444;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border: none;
+  margin-top: 8px;
+  color: #bbb;
+}
+
+body.dark .dropdown-menu .dropdown-item {
+  color: #bbb;
+  background-color: transparent;
+}
+
+body.dark .dropdown-menu .dropdown-item:hover,
+body.dark .dropdown-menu .dropdown-item:focus {
+  background-color: var(--brightBlue);
+  color: #fff;
+}
+
+body.dark .dropdown-menu .dropdown-item.active {
+  background-color: var(--brightBlue);
+  color: #fff;
+}
+
+body.dark #edit-user-input {
+  background-color: #333;
+  color: #bbb;
+  border: 1px solid #555;
+  border-radius: 4px;
+
+}
+
+body.dark #edit-user-input:focus {
+  outline: none;
+  border-color: var(--brightBlue);
+  color: #bbb !important;
+}
+
+body.dark #edit-user-input:-webkit-autofill {
+  background-color: #333 !important;
+  color: #bbb !important;
+  -webkit-box-shadow: 0 0 0 1000px #333 inset !important;
+  border: 1px solid #555 !important;
+}
+
+body.dark #edit-user-input:-webkit-autofill:focus {
+  outline: none;
+  border-color: #007bff;
+  color: #bbb !important;
+}
+
+body.dark footer {
+  background-color: #222;
+  border-top: 1px solid #444;
+  color: #ccc;
+}
+
+body.dark footer h6 {
+  color: #ccc;
+}
+
+body.dark .modal-content {
+  background-color: #333;
+  color: #ddd;
+  border: 1px solid #555;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+body.dark .modal-header {
+  background-color: #444;
+  color: #fff;
+  border-bottom: 1px solid #555;
+}
+
+body.dark .modal-title {
+  color: #ddd;
+}
+
+body.dark .btn-close {
+  color: #bbb;
+  background-color: transparent;
+}
+
+body.dark .btn-close:hover {
+  color: #fff;
+}
+
+body.dark .modal-body {
+  background-color: #333;
+  color: #ccc;
+}
+
+body.dark .modal-footer {
+  background-color: #444;
+  border-top: 1px solid #555;
+}
+
+body.dark .modal-footer .btn {
+  color: #ddd;
+  background-color: #555;
+  border: none;
+}
+
+body.dark .modal-footer .btn:hover {
+  background-color: #666;
+}
+
+body.dark .modal-footer .btn-danger {
+  background-color: #b33a3a;
+  color: #fff;
+}
+
+body.dark .modal-footer .btn-danger:hover {
+  background-color: #cc4c4c;
 }

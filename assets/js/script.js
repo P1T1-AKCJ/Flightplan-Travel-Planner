@@ -53,10 +53,10 @@ document
     if (userInput === "") {
       return;
     } else {
-      userInputObj = { 
-        id: todoId, 
-        text: userInput, 
-        status: "not-started" 
+      userInputObj = {
+        id: todoId,
+        text: userInput,
+        status: "not-started"
       };
       todos.push(userInputObj);
     }
@@ -64,6 +64,7 @@ document
     storeUserInput(userInputObj);
     storeToDoCount();
     setCountsAsBadge('not-started');
+    updateProgressBar();
   });
 
 document.addEventListener("DOMContentLoaded", function () {

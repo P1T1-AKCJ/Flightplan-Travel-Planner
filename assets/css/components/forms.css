@@ -8,7 +8,7 @@ form#addTaskForm {
   width: auto;
   /* max-width: calc(100% - 150px); */
   min-width: 200px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 form#addTaskForm input[type="text"] {
@@ -132,3 +132,4 @@ form#addTaskForm input[type="text"]:focus {
     margin-bottom: 10px;
   }
 }
+

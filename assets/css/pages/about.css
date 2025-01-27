@@ -11,26 +11,12 @@ body {
   align-items: center;
   text-align: center;
   color: var(--brightblue);
+  box-sizing: border-box;
 }
 
 header h3 {
   margin-right: 30px;
   font-weight: 400;
-}
-
-footer {
-  display: flex;
-  flex-direction: row;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  justify-content: space-evenly;
-  background-color: var(--brightblue);
-  text-align: center;
-  color: white;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  opacity: 90%;
 }
 
 /*Styling for About Us banner*/

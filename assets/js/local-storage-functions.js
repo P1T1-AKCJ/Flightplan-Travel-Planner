@@ -13,6 +13,7 @@ function renderDataFromLocalStorage() {
         initTodoItem(data.text, data.status, data.id);
       });
     }
+    updateProgressBar();
 }
 
 function persistItemStatusInLocalStorage(id, newStatus) {

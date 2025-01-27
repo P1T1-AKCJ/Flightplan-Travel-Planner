@@ -34,5 +34,7 @@ window.onload = function () {
     ? "assets/images/mode_light.svg"
     : "assets/images/mode_dark.svg";
 
+
+
   toggle.addEventListener("click", toggleLightDark);
 };

@@ -77,11 +77,6 @@ main {
   color: white;
 }
 
-.footer {
-  font-size: 0.9em;
-  font-family: sans-serif;
-  margin-top: .5%;
-}
 
 .edit-mode #addTaskForm,
 .edit-mode .dropdown,

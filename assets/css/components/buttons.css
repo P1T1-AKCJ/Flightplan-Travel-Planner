@@ -15,9 +15,9 @@
 }
 
 .dropdown .btn:hover {
-  background-color: var(--brightBlue);
+  background-color: #cdd7dc;
 }
-  
+
 .dropdown-menu {
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -57,18 +57,30 @@
 }
 
 .edit-btn:hover {
-  background-color: #f3c57d;
+  background-color: #cdd7dc;
 }
 
 .btn-edit,
 .btn-edit:hover {
-  color: #353131d4;
+  color: #777;
+}
+
+.btn-edit:focus,
+.btn-edit:active,
+.btn-edit:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.delete-btn:hover {
+  background-color: #cdd7dc;
 }
 
 .btn-close {
-  color: black;
+  color: #777;
 }
-
 .btn-close:active,
 .btn-close:focus {
   box-shadow: none;
@@ -92,11 +104,11 @@
 }
 
 .delete-btn:hover {
-  background-color: #d7717d;
+  background-color: #cdd7dc;
 }
 
 .delete-btn:hover .btn-close {
-  color: black;
+  color: #777;
 }
 
 .btn-close:active,
@@ -130,7 +142,7 @@
 
 .add-todo-btn .tooltip {
   position: absolute;
-  top: 120%;
+  top: 97%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #333;
@@ -145,3 +157,7 @@
   z-index: 10;
 }
 
+.edit-btn,
+.delete-btn {
+  flex-shrink: 0;
+}

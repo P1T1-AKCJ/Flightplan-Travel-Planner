@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flightplan</title>
+    <title>Flightplan - Home</title>
     <link
       rel="shortcut icon"
       type="image/x-icon"
@@ -41,7 +41,7 @@
     <header id="header">
       <section class="brand-logo">
         <img
-          src="assets/images/jaden-custom-grey-suitcase-icon.png"
+          src="assets/images/grey-suitcase-icon-nobg.png"
           id="brandLogoMark"
         />
         <h1 id="brandLogoType">Flightplan</h1>
@@ -53,6 +53,7 @@
             type="text"
             id="inputField"
             name="inputField"
+            autocomplete="on"
             placeholder="What's Next for Your Trip?"
           />
           <button
@@ -116,8 +117,9 @@
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                Do you really want to delete this todo?
+                Are you sure you want to permanently remove this item?
               </h1>
+
               <button
                 type="button"
                 class="btn-close"
@@ -222,8 +224,7 @@
           <ul class="todo-list" id="done-column"></ul>
         </article>
       </section>
-    </main>
-  </body>
+
   <div class="progress" style="height: 30px">
     <div
       class="progress-bar progress-bar-striped progress-bar-animated bg-not-started"
@@ -243,7 +244,7 @@
       aria-valuemin="0"
       aria-valuemax="100"
     >
-      In Progress
+      Working On It
     </div>
     <div
       class="progress-bar progress-bar-striped progress-bar-animated bg-on-hold"
@@ -266,10 +267,9 @@
       Done
     </div>
   </div>
+</main>
   <footer>
-    <h6 class="footer">Columbia Bootcamp &copy; 2025</h6>
-    <h6 class="footer">Contact</h6>
-    <h6 class="footer">Help</h6>
+    <h6 class="footer">Powered by Columbia Coding Bootcamp</h6>
   </footer>
   <script src="./assets/js/toggle.js"></script>
 </html>
