@@ -12,8 +12,8 @@ function toggleLightDark() {
 
   toggle.src =
     mode === "dark"
-      ? "assets/images/mode_dark.svg"
-      : "assets/images/mode_light.svg";
+      ? "assets/images/mode_light.svg"
+      : "assets/images/mode_dark.svg";
 }
 
 window.onload = function () {
@@ -31,8 +31,8 @@ window.onload = function () {
   }
 
   toggle.src = body.classList.contains("dark")
-    ? "assets/images/mode_dark.svg"
-    : "assets/images/mode_light.svg";
+    ? "assets/images/mode_light.svg"
+    : "assets/images/mode_dark.svg";
 
   toggle.addEventListener("click", toggleLightDark);
 };

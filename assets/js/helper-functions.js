@@ -75,3 +75,131 @@ function showDeleteTodoModal(todoId, userInput) {
     deleteTodo(todoId);
   });
 }
+
+function deleteTodo(todoId) {
+  const todoStatus = todos.find((todo) => todo.id === todoId)?.status;
+  if (todoStatus) {
+    todos = todos.filter((todo) => todo.id !== todoId);
+    const todoToDelete = document.getElementById(`todo-item-${todoId}`);
+    todoToDelete?.remove();
+    dismissModal();
+    updateCounts();
+    setCountsAsBadge(todoStatus);
+    deleteToDoFromLocalStorage(todoId);
+  }
+}
+
+function createStatusDropdownMenu(ulDropdownMenu, todoId) {
+  // creates Not Started Btn
+  const liNotStartedBtn = document.createElement("li");
+  liNotStartedBtn.setAttribute("id", "not-started-btn");
+  const aNotStartedBtn = document.createElement("a");
+  aNotStartedBtn.setAttribute("id", todoId);
+  aNotStartedBtn.setAttribute("class", "dropdown-item");
+  aNotStartedBtn.setAttribute("href", "#");
+  aNotStartedBtn.textContent = "Not Started";
+  liNotStartedBtn.appendChild(aNotStartedBtn);
+  ulDropdownMenu.appendChild(liNotStartedBtn);
+
+  // creates In Progress Btn
+  const liInProgressBtn = document.createElement("li");
+  liInProgressBtn.setAttribute("id", "in-progress-btn");
+  const aInProgressBtn = document.createElement("a");
+  aInProgressBtn.setAttribute("id", todoId);
+  aInProgressBtn.setAttribute("class", "dropdown-item");
+  aInProgressBtn.setAttribute("href", "#");
+  aInProgressBtn.textContent = "Working On It";
+  liInProgressBtn.appendChild(aInProgressBtn);
+  ulDropdownMenu.appendChild(liInProgressBtn);
+
+  // Add "On Hold" Button
+  const liOnHoldBtn = document.createElement("li");
+  liOnHoldBtn.setAttribute("id", "on-hold-btn");
+  const aOnHoldBtn = document.createElement("a");
+  aOnHoldBtn.setAttribute("id", todoId);
+  aOnHoldBtn.setAttribute("class", "dropdown-item");
+  aOnHoldBtn.setAttribute("href", "#");
+  aOnHoldBtn.textContent = "On Hold";
+  liOnHoldBtn.appendChild(aOnHoldBtn);
+  ulDropdownMenu.appendChild(liOnHoldBtn);
+
+  // creates Done Btn
+  const liDoneBtn = document.createElement("li");
+  liDoneBtn.setAttribute("id", "done-btn");
+  const aDoneBtn = document.createElement("a");
+  aDoneBtn.setAttribute("id", todoId);
+  aDoneBtn.setAttribute("class", "dropdown-item");
+  aDoneBtn.setAttribute("href", "#");
+  aDoneBtn.textContent = "Done";
+  liDoneBtn.appendChild(aDoneBtn);
+  ulDropdownMenu.appendChild(liDoneBtn);
+
+  // attach event listeners to Not Started, In Progress and Done Buttons
+  liNotStartedBtn.addEventListener("click", function (event) {
+    const todo = todos.find((el) => el.id === +event.target.id);
+    const oldStatus = todo.status;
+    if (todo.status !== "not-started") {
+      todo.status = "not-started";
+      const todoHTML = document.getElementById(
+        `todo-item-${event.target.id}`
+      );
+      document.getElementById("not-started-column").appendChild(todoHTML);
+      updateCounts(); // call updateCounts to refresh the counts
+      setCountsAsBadge(oldStatus);
+      persistItemStatusInLocalStorage(+event.target.id, "not-started");
+    }
+  });
+  
+  liInProgressBtn.addEventListener("click", function (event) {
+    const todo = todos.find((el) => el.id === +event.target.id);
+    const oldStatus = todo.status;
+    if (todo.status !== "in-progress") {
+      todo.status = "in-progress";
+      const todoHTML = document.getElementById(
+        `todo-item-${event.target.id}`
+      );
+      document.getElementById("in-progress-column").appendChild(todoHTML);
+      updateCounts(); // call updateCounts to refresh the counts
+      setCountsAsBadge(oldStatus);
+      persistItemStatusInLocalStorage(+event.target.id, "in-progress");
+    }
+  });
+  
+  liOnHoldBtn.addEventListener("click", function (event) {
+    const todo = todos.find((el) => el.id === +event.target.id);
+    const oldStatus = todo.status;
+    if (todo.status !== "on-hold") {
+      todo.status = "on-hold";
+      const todoHTML = document.getElementById(
+        `todo-item-${event.target.id}`
+      );
+      document.getElementById("on-hold-column").appendChild(todoHTML);
+    }
+    updateCounts(); // Update the counts after moving
+    setCountsAsBadge(oldStatus);
+    persistItemStatusInLocalStorage(+event.target.id, "on-hold");
+  });
+  
+  liDoneBtn.addEventListener("click", function (event) {
+    const todo = todos.find((el) => el.id === +event.target.id);
+    const oldStatus = todo.status;
+    if (todo.status !== "done") {
+      todo.status = "done";
+      const todoHTML = document.getElementById(
+        `todo-item-${event.target.id}`
+      );
+      document.getElementById("done-column").appendChild(todoHTML);
+      updateCounts(); // call updateCounts to refresh the counts
+      setCountsAsBadge(oldStatus);
+      persistItemStatusInLocalStorage(+event.target.id, "done");
+    }
+  });
+}
+
+function setEditMode() {
+  body.classList.add("edit-mode");
+}
+
+function removeEditMode() {
+  body.classList.remove("edit-mode");
+}

@@ -83,6 +83,31 @@ main {
   margin-top: .5%;
 }
 
+.edit-mode #addTaskForm,
+.edit-mode .dropdown,
+.edit-mode .delete-btn {
+  cursor: not-allowed;
+  opacity: 60%;
+}
+.edit-mode .input-wrapper,
+.edit-mode .dropdown-toggle,
+.edit-mode .btn-close {
+  pointer-events: none;
+}
+
+.edit-mode .delete-btn:hover {
+  background-color: #e5f1f6;
+}
+
+.edit-mode .main-table-mobile {
+  cursor: not-allowed;
+  opacity: 60%;
+}
+
+.edit-mode .nav-pills {
+  pointer-events: none;
+}
+
 @media (max-width: 768px) {
   .main-table {
     flex-direction: column;
