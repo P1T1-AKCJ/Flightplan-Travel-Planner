@@ -104,6 +104,75 @@
       </nav>
     </header>
 
+    <header id="header-mobile">
+      <div class="head-menu">
+        <section class="brand-logo">
+          <img
+            src="assets/images/grey-suitcase-icon-nobg.png"
+            id="brandLogoMark"
+          />
+          <h1 id="brandLogoType">Flightplan</h1>
+        </section>
+  
+        <nav>
+          <div class="header-links">
+            <div class="nav-item">
+              <a href="index.html" class="nav-link">
+                <img
+                  src="assets/images/google-home-icon.svg"
+                  alt="Home Icon"
+                  class="nav-icon"
+                />
+    
+                <span>Home</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a href="about.html" class="nav-link">
+                <img
+                  src="assets/images/google-info-icon.svg"
+                  alt="Info Icon"
+                  class="nav-icon"
+                />
+                <span>About</span>
+              </a>
+            </div>
+          </div>
+          <div class="nav-item" id="toggle">
+            <img
+              src="assets/images/mode_light.svg"
+              alt="light mode"
+              class="nav-icon"
+            />
+          </div>
+        </nav>
+      </div>
+
+      <form id="addTaskForm">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="inputField"
+            name="inputField"
+            autocomplete="on"
+            placeholder="What's Next for Your Trip?"
+          />
+          <button
+            type="button"
+            id="clearButton"
+            class="clear-icon"
+            aria-label="Clear"
+          >
+            <span class="tooltip">Clear</span>
+            ✖
+          </button>
+          <button type="submit" id="addTaskButton" class="add-todo-btn">
+            <img src="assets/images/google-plus-icon.svg" alt="Add Task" />
+            <span class="tooltip">Add a Task</span>
+          </button>
+        </div>
+      </form>
+    </header>
     <main>
       <div
           class="modal edit-todo-modal"

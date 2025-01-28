@@ -7,13 +7,8 @@ window.addEventListener("load", function (event) {
   if (event.currentTarget.innerWidth <= 1071) {
     mainTableNavMobile.classList.remove("hide");
     setCountsAsBadge('not-started');
-  } else {
-    if (
-      event.currentTarget.innerWidth > 1071 &&
-      !mainTableNavMobile.classList.value.includes("hide")
-    ) {
-      mainTableNavMobile.classList.add("hide");
-    }
+  } else if (event.currentTarget.innerWidth > 1071 && !mainTableNavMobile.classList.value.includes("hide")) {
+    mainTableNavMobile.classList.add("hide");
   }
 });
 
@@ -21,13 +16,8 @@ window.addEventListener("load", function (event) {
 window.addEventListener("resize", function (event) {
   if (event.currentTarget.innerWidth <= 1071) {
     mainTableNavMobile.classList.remove("hide");
-  } else {
-    if (
-      event.currentTarget.innerWidth > 1071 &&
-      !mainTableNavMobile.classList.value.includes("hide")
-    ) {
-      mainTableNavMobile.classList.add("hide");
-    }
+  } else if (event.currentTarget.innerWidth > 1071 && !mainTableNavMobile.classList.value.includes("hide")) {
+    mainTableNavMobile.classList.add("hide");
   }
 });
 
