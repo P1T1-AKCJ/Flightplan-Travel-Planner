@@ -69,7 +69,7 @@ function dismissModal() {
 
 function showDeleteTodoModal(todoId, event) {
   const modalBody = document.querySelector(".delete-todo-modal-body");
-  modalBody.innerHTML = event.target.parentElement.parentElement.firstChild.innerHTML;
+  modalBody.innerHTML = event.target.parentElement.parentElement.parentElement.firstChild.innerHTML;
   const deleteTodoBtn = document.getElementById("delete-todo-btn");
   deleteTodoBtn.addEventListener("click", function () {
     deleteTodo(todoId);

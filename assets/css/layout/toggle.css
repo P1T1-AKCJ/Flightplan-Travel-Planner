@@ -287,7 +287,13 @@ body.dark .btn-edit:hover {
 
 body.dark .btn-edit:focus,
 body.dark .btn-edit:active,
-body.dark .btn-edit:focus-visible {
+body.dark .btn-edit:focus-visible,
+body.dark .delete-todo-btn:active,
+body.dark .delete-todo-btn:focus,
+body.dark .delete-todo-btn:focus-visible,
+.delete-todo-btn:active,
+.delete-todo-btn:focus,
+.delete-todo-btn:focus-visible {
   outline: none !important;
   box-shadow: none !important;
   border: none !important;

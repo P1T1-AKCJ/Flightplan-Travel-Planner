@@ -125,7 +125,7 @@ form#addTaskForm input[type="text"]:focus {
   width: 95%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1071px) {
   form#addTaskForm {
     width: 100%;
     max-width: none;

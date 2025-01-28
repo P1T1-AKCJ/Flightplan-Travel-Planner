@@ -103,19 +103,37 @@ main {
   pointer-events: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1205px) {
+  .main-table .column {
+    width: 20%;
+  }
+}
+
+@media (max-width: 1116px) {
+  .main-table {
+    gap: 1px;
+  }
+
+  .main-table .column {
+    width: 10%;
+  }
+}
+
+@media (max-width: 1071px) {
   .main-table {
     flex-direction: column;
     align-items: center;
+    margin: 1em 0;
   }
-  .column {
+
+  .main-table .column {
     margin: 0 0 1em;
+    width: 100%;
   }
 }
 
 @media (max-width: 844px) {
-  .column {
-    width: 100%;
-    margin: 1em;
+  .main-table .column {
+    margin: 0 0 1em;
   }
 }

@@ -4,12 +4,12 @@ const mainTableNavMobile = document.querySelector(".main-table-mobile");
 
 // on load webpage event listener
 window.addEventListener("load", function (event) {
-  if (event.currentTarget.innerWidth <= 768) {
+  if (event.currentTarget.innerWidth <= 1071) {
     mainTableNavMobile.classList.remove("hide");
     setCountsAsBadge('not-started');
   } else {
     if (
-      event.currentTarget.innerWidth > 768 &&
+      event.currentTarget.innerWidth > 1071 &&
       !mainTableNavMobile.classList.value.includes("hide")
     ) {
       mainTableNavMobile.classList.add("hide");
@@ -19,11 +19,11 @@ window.addEventListener("load", function (event) {
 
 // screen resize event listener
 window.addEventListener("resize", function (event) {
-  if (event.currentTarget.innerWidth <= 768) {
+  if (event.currentTarget.innerWidth <= 1071) {
     mainTableNavMobile.classList.remove("hide");
   } else {
     if (
-      event.currentTarget.innerWidth > 768 &&
+      event.currentTarget.innerWidth > 1071 &&
       !mainTableNavMobile.classList.value.includes("hide")
     ) {
       mainTableNavMobile.classList.add("hide");

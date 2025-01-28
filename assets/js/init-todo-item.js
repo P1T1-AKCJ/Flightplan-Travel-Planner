@@ -117,17 +117,24 @@ function initTodoItem(userInputText, status, todoId) {
   updateCounts(); // Update counts
 
   // delete button
-  const deleteBtn = document.createElement("div");
-  deleteBtn.classList.add("delete-btn");
-  deleteBtn.innerHTML = `
-    <button class="btn btn-close"
+  const deleteBtnDiv = document.createElement("div");
+  deleteBtnDiv.classList.add("delete-btn");
+  deleteBtnDiv.innerHTML = `
+    <button class="btn delete-todo-btn"
       type="button"
       data-bs-toggle="modal"
       data-bs-target="#staticBackdrop">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px" fill="#777">
+        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
     </button>
   `;
-  deleteBtn.addEventListener("click", function (event) {
+  const deleteIconBtn = deleteBtnDiv.firstElementChild.firstElementChild;
+  deleteIconBtn.addEventListener("click", function (event) {
     showDeleteTodoModal(todoId, event);
   });
-  divTodo.appendChild(deleteBtn);
+  divTodo.appendChild(deleteBtnDiv );
 }
