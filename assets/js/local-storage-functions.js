@@ -55,6 +55,6 @@ function storeUserInput(userInputObj) {
     }
   } else {
     localStorage.setItem("userInputList", JSON.stringify([userInputObj]));
-    todos = storedData;
+    todos = [userInputObj];
   }
 }

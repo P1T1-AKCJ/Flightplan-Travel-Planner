@@ -55,63 +55,51 @@ header h3 {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   border-radius: 10%;
   min-height: 100%;
+  align-items: center;
 }
 
 .card {
-  border-radius: 10%;
-  background-color: var(--white);
-  flex: 0 0 400px;
-  overflow: hidden;
-  flex-basis: calc(20% - 40px);
+  margin: 20px auto;
+  width: 75%;
+  border-radius: 10px;
+  background-color: rgba(240, 248, 255, 0.253);
+}
+
+.photos {
+  max-width: 200px;
+  float: left;
+  border-radius: 10px;
   margin: 20px;
+  filter: opacity(80%)
+}
+
+.personal-text {
+  padding: 10px;
 }
 
 .card h3 {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
+  padding: 1px;
   color: white;
-  font-family: "Pacifico", serif;
-  border-radius: 10px 10px 0 0;
-  padding: 10px;
-  margin: 0;
-  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-}
-
-.antonina {
-  background-color: #f3c57d;
-}
-
-.kirstin {
-  background-color: #8b99aa;
-}
-
-.jaden {
-  background: #db7f8a;
-}
-
-.chris {
-  background: #7cd4a1;
 }
 
 .card p {
+  padding: 0px;
+}
+
+.card p a {
+  text-decoration: none;
   color: var(--brightblue);
-  font-size: 1.2rem;
-  font-weight: 400;
-  opacity: 90%;
-  text-align: center;
-  padding: 10px;
 }
-.card img {
-  width: 100%;
+
+.card p a:hover {
+  text-decoration: underline;
 }
+
 
 .card:hover {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
+

@@ -115,12 +115,22 @@ body.dark .banner {
   background-color: var(--lightgrey);
 }
 
+body.dark .big-banner {
+  background-image: linear-gradient(
+    rgba(23, 121, 240, 0.625),
+    rgba(5, 5, 5, 0.399)
+  ),
+  url("../wavebanner.jpg");
+}
+
 body.dark .column {
   background-color: var(--lightgrey);
 }
 
 body.dark .card {
   background-color: var(--lightgrey);
+  padding: 1px;
+  border-radius: 10px;
 }
 
 body.dark .card:hover {
@@ -128,6 +138,10 @@ body.dark .card:hover {
 }
 
 body.dark .card p {
+  color: rgb(183, 182, 182);
+}
+
+body.dark .card a {
   color: var(--accent);
 }
 
@@ -137,7 +151,7 @@ body.dark footer {
 
 
 
-/* about us page card headers */
+/* about us page card headers 
 body.dark .kirstin {
   background-color: #add2ff;
 
@@ -155,7 +169,7 @@ body.dark .jaden {
 body.dark .chris {
   background-color: #93ffc0;
 }
-
+*/ 
 /*column styling*/
 
 body.dark .column:hover {

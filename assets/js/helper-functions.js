@@ -105,11 +105,11 @@ function showEditTodoModal(problem) {
   const modalBody = document.querySelector(".edit-todo-modal-body");
   const modalBtn = document.querySelector(".edit-todo-modal-btn");
   if (problem === "empty-input") {
-    modalTitle.innerText = "You cannot save empty field!";
-    modalBody.innerText = "Please, add text to the field."
+    modalTitle.innerText = "This Field Cannot Be Left Blank!";
+    modalBody.innerText = "To save your changes, please make sure to add some text to the field before proceeding."
   } else if (problem === "editing-another-field") {
-    modalTitle.innerText = "You are currently editing another field!";
-    modalBody.innerText = "Please, finish your previous editing. After that you can start editing other fields."
+    modalTitle.innerText = "Finish Editing the Current Field First!";
+    modalBody.innerText = "You're still working on another field. Please complete or cancel your current edits before moving to a new one."
   }
   body.style.opacity = "80%";
   const editTodoModal = document.querySelector(".edit-todo-modal");
@@ -117,6 +117,7 @@ function showEditTodoModal(problem) {
 
   modalBtn.addEventListener("click", function() {
     editTodoModal.style.display = "none";
+    body.style.opacity = "100%";
   });
 }
 
