@@ -88,8 +88,7 @@ const inProgressColumn = document.getElementById("in-progress-column");
 const onHoldColumn = document.getElementById("on-hold-column");
 const doneColumn = document.getElementById("done-column");
 
-notStartedTab.addEventListener('click', function (event) {
-
+notStartedTab.addEventListener('click', function () {
   notStartedColumn.parentElement.classList.remove("hide");
   inProgressColumn.parentElement.classList.add("hide");
   onHoldColumn.parentElement.classList.add("hide");
@@ -98,8 +97,7 @@ notStartedTab.addEventListener('click', function (event) {
   setCountsAsBadge('not-started');
 });
 
-inProgressTab.addEventListener('click', function (event) {
-
+inProgressTab.addEventListener('click', function () {
   notStartedColumn.parentElement.classList.add("hide");
   inProgressColumn.parentElement.classList.remove("hide");
   onHoldColumn.parentElement.classList.add("hide");
@@ -108,8 +106,7 @@ inProgressTab.addEventListener('click', function (event) {
   setCountsAsBadge('in-progress');
 });
 
-onHoldTab.addEventListener('click', function (event) {
-
+onHoldTab.addEventListener('click', function () {
   notStartedColumn.parentElement.classList.add("hide");
   inProgressColumn.parentElement.classList.add("hide");
   onHoldColumn.parentElement.classList.remove("hide");
@@ -118,12 +115,7 @@ onHoldTab.addEventListener('click', function (event) {
   setCountsAsBadge('on-hold');
 });
 
-doneTab.addEventListener('click', function (event) {
-  event.target.textContent = "✅ Done";
-  notStartedTab.textContent = "🕒";
-  inProgressTab.textContent = "⚙️";
-  onHoldTab.textContent = "🛑";
-
+doneTab.addEventListener('click', function () {
   notStartedColumn.parentElement.classList.add("hide");
   inProgressColumn.parentElement.classList.add("hide");
   onHoldColumn.parentElement.classList.add("hide");
