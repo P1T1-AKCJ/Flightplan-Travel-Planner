@@ -1,6 +1,6 @@
 /* Dropdown Button Styling */
 .dropdown .btn {
-  background-color: #e5f1f6;
+  background-color: var(--softGreyBackground);
   border: none;
   width: 30px;
   height: 30px;
@@ -36,7 +36,7 @@
 /* Delete and Edit Button Styling */
 .delete-btn,
 .edit-btn {
-  background-color: #e5f1f6;
+  background-color: var(--softGreyBackground);
   border: none;
   width: 30px;
   height: 30px;
@@ -87,7 +87,7 @@
 }
 
 .delete-btn {
-  background-color: #e5f1f6;
+  background-color: var(--softGreyBackground);
   border: none;
   width: 30px;
   height: 30px;

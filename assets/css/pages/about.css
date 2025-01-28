@@ -1,5 +1,5 @@
 body {
-  background-color: #bfdeed;
+  background-color: var(--softBlueBackground);
   margin: 0;
   padding: 0;
 }
@@ -7,16 +7,17 @@ body {
 .about-header {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   color: var(--brightblue);
   box-sizing: border-box;
+  background-color: #ecedef;
+  border-radius: 25px;
 }
 
-header h3 {
-  margin-right: 30px;
+header p {
+  padding: 0 1em;
   font-weight: 400;
+  font-size: 1.1em;
+  text-align: center;
 }
 
 /*Styling for About Us banner*/
@@ -98,4 +99,8 @@ header h3 {
 
 .card:hover {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+a:-webkit-any-link {
+  color: var(--brightblue);
 }

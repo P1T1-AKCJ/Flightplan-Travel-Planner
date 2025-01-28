@@ -34,7 +34,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #e5f1f6;
+  background-color: var(--softGreyBackground);
   border-radius: 10px 10px 0 0;
   color: #2b2f32;
   padding: 10px 15px;
@@ -91,7 +91,7 @@ main {
 }
 
 .edit-mode .delete-btn:hover {
-  background-color: #e5f1f6;
+  background-color: var(--softGreyBackground);
 }
 
 .edit-mode .main-table-mobile {
