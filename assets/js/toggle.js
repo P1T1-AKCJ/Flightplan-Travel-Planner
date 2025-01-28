@@ -21,20 +21,13 @@ window.onload = function () {
 
   if (mode) {
     body.classList.add(mode);
-
-    /*toggle.src = mode === "dark"
-    ? "assets/images/mode_dark.svg"
-    : "assets/images/mode_light.svg"; */
   } else {
     body.classList.add("light");
-    /*  toggle.src = "assets/images/mode_light.svg"; */
   }
 
   toggle.src = body.classList.contains("dark")
     ? "assets/images/mode_light.svg"
     : "assets/images/mode_dark.svg";
-
-
 
   toggle.addEventListener("click", toggleLightDark);
 };

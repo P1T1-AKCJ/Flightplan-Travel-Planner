@@ -1,53 +1,50 @@
 nav {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    align-items: center;
-    /* padding-right: 10px; */
-    padding: 0.4em 0.5em;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+  padding: 0.4em 0.5em;
+  flex-wrap: wrap;
+}
 
-  /* Individual Nav Items */
-  .nav-item {
-    display: flex;
-    align-items: center;
-    color: var(--brightBlue);
-  }
+/* Individual Nav Items */
+.nav-item {
+  display: flex;
+  align-items: center;
+  color: var(--brightBlue);
+}
 
+/* Nav Link Styling */
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px 15px;
+  border: 1px solid var(--lightgray);
+  border-radius: 25px;
+  background-color: var(--white);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 10px;
+}
 
-  /* Nav Link Styling */
-  .nav-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 10px 15px;
-    border: 1px solid var(--lightGrayBorder);
-    border-radius: 25px;
-    background-color: var(--white);
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    gap: 10px;
-  }
+/* Hover Effect for Nav Link */
+.nav-link:hover {
+  background-color: #def1ff;
+  border: 1px solid var(--brightBlue);
+}
 
-  /* Hover Effect for Nav Link */
-  .nav-link:hover {
-    background-color: #def1ff;
-    border: 1px solid var(--brightBlue);
-  }
+/* Nav Icon Styling */
+.nav-icon {
+  width: 20px;
+  height: 20px;
+}
 
-  /* Nav Icon Styling */
-  .nav-icon {
-    width: 20px;
-    height: 20px;
+.nav-link span {
+  font-size: 1rem;
+  font-weight: 500;
+}
 
-  }
-
-  .nav-link span {
-    font-size: 1rem;
-    font-weight: 500;
-  }
-
-  @media (max-width: 1071px) {
+@media (max-width: 1071px) {
   nav {
     width: 100%;
     justify-content: space-around;

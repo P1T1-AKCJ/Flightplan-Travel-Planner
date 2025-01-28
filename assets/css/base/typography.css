@@ -1,5 +1,5 @@
 body {
-    background-color: var(--bodyBackground);
-    color: var(--darkGrayText);
-    font-family: sans-serif;
-  }
+  background-color: var(--bodyBackground);
+  color: var(--darkGrayText);
+  font-family: sans-serif;
+}

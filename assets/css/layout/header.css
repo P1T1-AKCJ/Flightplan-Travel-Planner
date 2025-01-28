@@ -4,7 +4,7 @@ header {
   align-items: center;
   width: 100%;
   background-color: var(--white);
-  border-bottom: 1px solid var(--lightGrayBorder);
+  border-bottom: 1px solid var(--lightgray);
   opacity: 78%;
   padding: 3.6px 6.8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
