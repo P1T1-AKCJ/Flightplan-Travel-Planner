@@ -8,7 +8,8 @@
 }
 
 /* Base toggle styles */
-.dark-light-mode-toggle {
+.dark-light-mode-toggle,
+.dark-light-mode-toggle-mobile {
   font-size: 1.52em;
   margin: 0;
   padding: 4px; /* Gives some clickable padding */
@@ -21,12 +22,14 @@
 }
 
 /* Light mode hover */
-body.light .dark-light-mode-toggle:hover {
+body.light .dark-light-mode-toggle:hover,
+body.light .dark-light-mode-toggle-mobile:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* Dark mode hover */
-body.dark .dark-light-mode-toggle:hover {
+body.dark .dark-light-mode-toggle:hover,
+body.dark .dark-light-mode-toggle-mobile:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -41,22 +44,26 @@ body.dark header {
   opacity: 100;
 }
 
-body.dark form#addTaskForm input[type="text"] {
+body.dark form.add-todo-form input[type="text"],
+body.dark form.add-todo-form-mobile input[type="text"] {
   background-color: #4d5156;
   border-color: #303134;
   color: #ffffff
 }
 
-body.dark form#addTaskForm input[type="text"]::placeholder {
+body.dark form.add-todo-form input[type="text"]::placeholder,
+body.dark form.add-todo-form-mobile input[type="text"]::placeholder {
   color: #bfbfbf;
 }
 
-body.dark form#addTaskForm input[type="text"]:hover {
+body.dark form.add-todo-form input[type="text"]:hover,
+body.dark form.add-todo-form-mobile input[type="text"]:hover {
   background-color: #5f6368;
   color: #ffffff;
 }
 
-body.dark form#addTaskForm input[type="text"]:focus {
+body.dark form.add-todo-form input[type="text"]:focus,
+body.dark form.add-todo-form-mobile input[type="text"]:focus {
   border-color: var(--brightBlue);
   background-color: #5f6368;
 }

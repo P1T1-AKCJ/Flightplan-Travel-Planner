@@ -29,7 +29,7 @@ localStorage.removeItem("edit-mode");
 
 // form submission
 document
-  .getElementById("addTaskForm")
+  .querySelector(".add-todo-form")
   .addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -57,9 +57,42 @@ document
     updateProgressBar();
 });
 
+document
+  .querySelector(".add-todo-form-mobile")
+  .addEventListener("submit", function(event) {
+    console.log('mobile click');
+    event.preventDefault();
+
+    // get user input
+    let userInput = document.getElementById("inputField-mobile").value;
+    let userInputObj;
+    const lastTodoId = +localStorage.getItem('todoId');
+    const todoId = lastTodoId + 1;
+
+    // validate user input: do nothing if empty
+    if (userInput === "") {
+      return;
+    } else {
+      userInputObj = {
+        id: todoId,
+        text: userInput,
+        status: "not-started"
+      };
+      todos.push(userInputObj);
+    }
+    initTodoItem(userInput, userInputObj.status, todoId);
+    storeUserInput(userInputObj);
+    storeToDoCount();
+    setCountsAsBadge('not-started');
+    updateProgressBar();
+  }
+);
+
 document.addEventListener("DOMContentLoaded", function() {
   const inputField = document.getElementById("inputField");
+  const inputFieldMobile = document.getElementById("inputField-mobile");
   const clearButton = document.getElementById("clearButton");
+  const clearButtonMobile = document.getElementById("clearButton-mobile");
 
   // show/hide the clear button based on input
   inputField.addEventListener("input", function () {
@@ -70,11 +103,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  inputFieldMobile.addEventListener("input", function () {
+    if (inputFieldMobile.value.trim() !== "") {
+      clearButtonMobile.style.display = "flex"; // show the clear button
+    } else {
+      clearButtonMobile.style.display = "none"; // hide the clear button
+    }
+  });
+
   // clear the input field and hide the button when clicked
   clearButton.addEventListener("click", function () {
     inputField.value = "";
     clearButton.style.display = "none";
     inputField.focus(); // keep the focus on the input
+  });
+
+  clearButtonMobile.addEventListener("click", function () {
+    inputFieldMobile.value = "";
+    clearButtonMobile.style.display = "none";
+    inputFieldMobile.focus(); // keep the focus on the input
   });
 });
 

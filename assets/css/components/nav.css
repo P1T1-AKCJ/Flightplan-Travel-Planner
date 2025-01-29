@@ -55,4 +55,8 @@ nav {
     font-size: 0.8rem;
     padding: 5px 8px;
   }
+
+  .nav-link span {
+    font-size: 0.8rem;
+  }
 }

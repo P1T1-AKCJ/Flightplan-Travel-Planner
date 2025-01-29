@@ -78,7 +78,8 @@ main {
 }
 
 
-.edit-mode #addTaskForm,
+.edit-mode .add-todo-form,
+.edit-mode .add-todo-form-mobile,
 .edit-mode .dropdown,
 .edit-mode .delete-btn {
   cursor: not-allowed;

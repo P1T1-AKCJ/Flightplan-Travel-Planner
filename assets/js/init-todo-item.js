@@ -113,6 +113,7 @@ function initTodoItem(userInputText, status, todoId) {
   }
 
   document.getElementById("inputField").value = "";
+  document.getElementById("inputField-mobile").value = "";
 
   updateCounts(); // Update counts
 

@@ -1,5 +1,6 @@
 /* Add Task Form */
-form#addTaskForm {
+form.add-todo-form,
+form.add-todo-form-mobile {
   display: flex;
   flex-grow: 1;
   justify-content: flex-start;
@@ -10,7 +11,8 @@ form#addTaskForm {
   overflow: visible;
 }
 
-form#addTaskForm input[type="text"] {
+form.add-todo-form input[type="text"],
+form.add-todo-form-mobile input[type="text"] {
   flex-grow: 1;
   min-width: 200px;
   overflow: hidden;
@@ -25,15 +27,22 @@ form#addTaskForm input[type="text"] {
   height: 40px;
 }
 
-form#addTaskForm input[type="text"]::placeholder {
+form.add-todo-form input[type="text"]::placeholder,
+form.add-todo-form-mobile input[type="text"]::placeholder {
   color: #777;
 }
 
-form#addTaskForm input[type="text"]:hover {
+form.add-todo-form-mobile input[type="text"]::placeholder {
+  font-size: 0.8em;
+}
+
+form.add-todo-form input[type="text"]:hover,
+form.add-todo-form-mobile input[type="text"]:hover {
   background-color: #dadce0;
 }
 
-form#addTaskForm input[type="text"]:focus {
+form.add-todo-form input[type="text"]:focus,
+form.add-todo-form-mobile input[type="text"]:focus {
   border-color: var(--brightBlue);
   background-color: var(--softBlueFocus);
 }
@@ -124,7 +133,7 @@ form#addTaskForm input[type="text"]:focus {
 }
 
 @media (max-width: 1071px) {
-  form#addTaskForm {
+  form.add-todo-form-mobile {
     width: 100%;
     max-width: none;
     margin-bottom: 10px;
