@@ -10,7 +10,7 @@ Users can access the website with the following URL: https://p1t1-akcj.github.io
 
 ## Usage
 
-Flightplan is an application, which utilizes the organization of each travel, bacause travel should be about fun and the expirience, not stress and forgotten details.
+Flightplan is an application which optimizes the organization of traveling, because travel should be about fun and the experience, not stress and forgotten details.
 
 Users will make use of the text input bar at the top of the page to type their desired tasks. Once satisfied the user will click on the "+" icon to the right of their text. This pushes the task to the "Not Started Yet" column on the webpage.\
 ![User input form](./readme-images/image-1.png)
@@ -18,7 +18,7 @@ Users will make use of the text input bar at the top of the page to type their d
 On the right side of each task there are three icons.\
 ![Edit/Dropdown/Delete icons menu](./readme-images/image-3.png)
 
-The **first icon (the pencil)** allows the user to edit his task and save the change.
+The **first icon (the pencil)** allows the user to edit their task and save the change.
 The **second icon (arrow down)** opens a dropdown menu.\
 ![Dropdown options](./readme-images/image-2.png)
 
