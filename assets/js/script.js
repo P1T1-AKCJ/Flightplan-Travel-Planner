@@ -30,7 +30,7 @@ localStorage.removeItem("edit-mode");
 // form submission
 document
   .getElementById("addTaskForm")
-  .addEventListener("submit", function (event) {
+  .addEventListener("submit", function(event) {
     event.preventDefault();
 
     // get user input
@@ -55,9 +55,9 @@ document
     storeToDoCount();
     setCountsAsBadge('not-started');
     updateProgressBar();
-  });
+});
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
   const inputField = document.getElementById("inputField");
   const clearButton = document.getElementById("clearButton");
 

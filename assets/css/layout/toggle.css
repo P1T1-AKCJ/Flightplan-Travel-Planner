@@ -8,7 +8,7 @@
 }
 
 /* Base toggle styles */
-#toggle {
+.dark-light-mode-toggle {
   font-size: 1.52em;
   margin: 0;
   padding: 4px; /* Gives some clickable padding */
@@ -21,12 +21,12 @@
 }
 
 /* Light mode hover */
-body.light #toggle:hover {
+body.light .dark-light-mode-toggle:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* Dark mode hover */
-body.dark #toggle:hover {
+body.dark .dark-light-mode-toggle:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -127,14 +127,16 @@ body.dark .column {
   background-color: var(--lightgrey);
 }
 
+.dark .about-header {
+  background-color: #4d5156;
+}
+
 body.dark .card {
   background-color: var(--lightgrey);
-  padding: 1px;
-  border-radius: 10px;
 }
 
 body.dark .card:hover {
-  box-shadow: 2px 2px 5px rgba(80, 159, 255, 0.232);
+  box-shadow: 0px 0px 2px 2px #5f6368;
 }
 
 body.dark .card p {
@@ -148,29 +150,6 @@ body.dark .card a {
 body.dark footer {
   background-color: var(--dark);
 }
-
-
-
-/* about us page card headers 
-body.dark .kirstin {
-  background-color: #add2ff;
-
-}
-
-body.dark .antonina {
-  background-color:  #ffd592;
-
-}
-
-body.dark .jaden {
-  background-color: #ff94a0;
-}
-
-body.dark .chris {
-  background-color: #93ffc0;
-}
-*/ 
-/*column styling*/
 
 body.dark .column:hover {
   box-shadow: 0px 5px 10px rgb(80, 160, 255, 0.2);
@@ -194,7 +173,7 @@ body.dark .delete-btn:hover {
 
 /*main page column headers*/
 body.dark .column-header.not-started {
-  background-color: #add2ff;
+  background-color: #8b99aa;
 }
 
 body.dark .column-header.working-on-it {

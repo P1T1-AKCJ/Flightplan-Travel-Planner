@@ -1,7 +1,7 @@
 /* LOGIC FOR LIGHT AND DARK  MODE */
 
-const toggle = document.querySelector("#toggle img");
-const body = document.body;
+const body = document.querySelector("#body");
+const toggle = document.querySelector(".dark-light-mode-toggle");
 
 function toggleLightDark() {
   body.classList.toggle("dark");
@@ -28,6 +28,9 @@ window.onload = function () {
   toggle.src = body.classList.contains("dark")
     ? "assets/images/mode_light.svg"
     : "assets/images/mode_dark.svg";
-
-  toggle.addEventListener("click", toggleLightDark);
 };
+
+toggle.addEventListener("click", function() {
+  console.log('click here');
+  toggleLightDark();
+});
