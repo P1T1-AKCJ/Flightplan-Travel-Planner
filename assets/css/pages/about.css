@@ -16,7 +16,7 @@ body {
 header p {
   padding: 0 1em;
   font-weight: 400;
-  font-size: 1.1em;
+  font-size: 1em;
   text-align: center;
 }
 
@@ -103,4 +103,35 @@ header p {
 
 a:-webkit-any-link {
   color: var(--brightblue);
+}
+
+#about-page-header-mobile {
+  display: none;
+}
+
+@media (max-width: 1071px) {
+  #about-page-header-mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-header {
+    font-size: 0.9em;
+  }
+
+  #about-page-header-mobile .head-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #about-page-header-mobile .head-menu nav {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 400px) {
+  .about-header {
+    font-size: 0.8em;
+  }
 }
