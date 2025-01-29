@@ -1,0 +1,157 @@
+body {
+  background-color: var(--softBlueBackground);
+  margin: 0;
+  padding: 0;
+}
+
+.about-header {
+  display: flex;
+  flex-direction: row;
+  color: var(--brightblue);
+  box-sizing: border-box;
+  background-color: #ecedef;
+  border-radius: 25px;
+}
+
+header p {
+  padding: 0 1em;
+  font-weight: 400;
+  font-size: 1em;
+  text-align: center;
+}
+
+/*Styling for About Us banner*/
+.banner {
+  background-color: var(--brightblue);
+  text-align: center;
+  padding: 1px 0px 1px 0px;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 80%;
+  width: 100%;
+}
+
+/* Meet the team banner */
+.big-banner {
+  background-image: linear-gradient(
+      rgba(23, 121, 240, 0.625),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("../wavebanner.jpg");
+  background-size: cover;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+  color: var(--white);
+  opacity: 80%;
+  font-family: "Pacifico", serif;
+  font-size: larger;
+  width: 100%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Box styling*/
+.boxes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10%;
+  margin-bottom: 1.5em;
+}
+
+.card {
+  margin: 1em 0;
+  width: 75%;
+  border-radius: 10px;
+  background-color: #6fa2ce40;
+  display: flex;
+  padding: 1em 1em;
+}
+
+.photos {
+  max-width: 12rem;
+  align-self: center;
+  border-radius: 10px;
+}
+
+.personal-text {
+  padding: 0 10px;
+}
+
+.card h3 {
+  color: white;
+}
+
+.card p a {
+  text-decoration: none;
+  color: var(--brightblue);
+}
+
+.card p a:hover {
+  text-decoration: underline;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 2px 2px white;
+}
+
+a:-webkit-any-link {
+  color: var(--brightblue);
+}
+
+#about-page-header-mobile {
+  display: none;
+}
+
+@media (max-width: 1071px) {
+  #about-page-header-mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-header {
+    font-size: 0.9em;
+  }
+
+  #about-page-header-mobile .head-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #about-page-header-mobile .head-menu nav {
+    justify-content: space-between;
+  }
+
+  .card {
+    padding: 0.3em 1em;
+  }
+}
+
+@media (max-width: 850px) {
+  .card {
+    padding: 0 1em;
+  }
+}
+
+@media (max-width: 750px) {
+  .card {
+    flex-direction: column;
+    padding-top: 1em;
+  }
+
+  .personal-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .card h3,
+  .card .location {
+    align-self: center;
+    margin: 0.3em;
+  }
+}
+
+@media (max-width: 400px) {
+  .about-header {
+    font-size: 0.8em;
+  }
+}

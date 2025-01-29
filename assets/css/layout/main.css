@@ -1,0 +1,139 @@
+main {
+  margin: 15px;
+}
+
+.main-table {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.column {
+  width: 25%;
+  height: 85vh;
+  margin: 0.2em;
+  border-radius: 10px;
+  background-color: #ffffff;
+  min-width: 260px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.column:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.column .todo-list {
+  padding: 15px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.main-table h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--softGreyBackground);
+  border-radius: 10px 10px 0 0;
+  color: #2b2f32;
+  padding: 10px 15px;
+  font-weight: 550;
+  font-size: 20px;
+  margin: 0;
+}
+
+.column-title {
+  flex: 1;
+  text-align: center;
+}
+
+.column-count {
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-left: auto;
+  padding-right: 18px;
+  padding-top: 3px;
+  color: white;
+}
+
+.column-header.not-started {
+  background-color: #8b99aa;
+  color: white;
+}
+
+.column-header.working-on-it {
+  background-color: #f3c57d;
+  color: white;
+}
+
+.column-header.on-hold {
+  background-color: #db7f8a;
+  color: white;
+}
+
+.column-header.done {
+  background-color: #7cd4a1;
+  color: white;
+}
+
+
+.edit-mode #addTaskForm,
+.edit-mode .dropdown,
+.edit-mode .delete-btn {
+  cursor: not-allowed;
+  opacity: 60%;
+}
+.edit-mode .input-wrapper,
+.edit-mode .dropdown-toggle,
+.edit-mode .btn-close {
+  pointer-events: none;
+}
+
+.edit-mode .delete-btn:hover {
+  background-color: var(--softGreyBackground);
+}
+
+.edit-mode .main-table-mobile {
+  cursor: not-allowed;
+  opacity: 60%;
+}
+
+.edit-mode .nav-pills {
+  pointer-events: none;
+}
+
+@media (max-width: 1205px) {
+  .main-table .column {
+    width: 20%;
+  }
+}
+
+@media (max-width: 1116px) {
+  .main-table {
+    gap: 1px;
+  }
+
+  .main-table .column {
+    width: 10%;
+  }
+}
+
+@media (max-width: 1071px) {
+  .main-table {
+    flex-direction: column;
+    align-items: center;
+    margin: 1em 0;
+  }
+
+  .main-table .column {
+    margin: 0 0 1em;
+    width: 100%;
+  }
+}
+
+@media (max-width: 844px) {
+  .main-table .column {
+    margin: 0 0 1em;
+  }
+}
