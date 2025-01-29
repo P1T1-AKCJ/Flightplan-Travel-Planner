@@ -41,11 +41,9 @@ window.onload = function () {
 };
 
 toggle.addEventListener("click", function() {
-  console.log('click here');
   toggleLightDark();
 });
 
 toggleMobile.addEventListener("click", function() {
-  console.log('click here');
   toggleLightDark();
 });

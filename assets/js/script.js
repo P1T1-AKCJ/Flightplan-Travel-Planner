@@ -60,7 +60,6 @@ document
 document
   .querySelector(".add-todo-form-mobile")
   .addEventListener("submit", function(event) {
-    console.log('mobile click');
     event.preventDefault();
 
     // get user input
