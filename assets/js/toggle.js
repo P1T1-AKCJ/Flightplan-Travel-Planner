@@ -1,8 +1,8 @@
 /* LOGIC FOR LIGHT AND DARK  MODE */
 
 const body = document.querySelector("#body");
-const toggle = document.querySelector(".dark-light-mode-toggle");
-const toggleMobile = document.querySelector(".dark-light-mode-toggle-mobile");
+const toggle = document.querySelector(".dark-light-mode-toggle img");
+const toggleMobile = document.querySelector(".dark-light-mode-toggle-mobile img");
 
 function toggleLightDark() {
   body.classList.toggle("dark");
@@ -11,7 +11,20 @@ function toggleLightDark() {
   const mode = body.classList.contains("dark") ? "dark" : "light";
   localStorage.setItem("theme", mode);
 
-  toggle.src =
+  // console.log(window.location.href.includes('about'));
+
+  if (window.location.href.includes('about')) {
+    toggle.src =
+    mode === "dark"
+      ? "../../assets/images/mode_light.svg"
+      : "../../assets/images/mode_dark.svg";
+
+  toggleMobile.src =
+    mode === "dark"
+      ? "../../assets/images/mode_light.svg"
+      : "../../assets/images/mode_dark.svg";
+  } else {
+    toggle.src =
     mode === "dark"
       ? "assets/images/mode_light.svg"
       : "assets/images/mode_dark.svg";
@@ -20,6 +33,7 @@ function toggleLightDark() {
     mode === "dark"
       ? "assets/images/mode_light.svg"
       : "assets/images/mode_dark.svg";
+  }
 }
 
 window.onload = function () {
@@ -31,13 +45,23 @@ window.onload = function () {
     body.classList.add("light");
   }
 
-  toggle.src = body.classList.contains("dark")
+  if (window.location.href.includes('about')) {
+    toggle.src = body.classList.contains("dark")
+    ? "../../assets/images/mode_light.svg"
+    : "../../assets/images/mode_dark.svg";
+
+  toggleMobile.src = body.classList.contains("dark")
+    ? "../../assets/images/mode_light.svg"
+    : "../../assets/images/mode_dark.svg";
+  } else {
+    toggle.src = body.classList.contains("dark")
     ? "assets/images/mode_light.svg"
     : "assets/images/mode_dark.svg";
 
   toggleMobile.src = body.classList.contains("dark")
     ? "assets/images/mode_light.svg"
     : "assets/images/mode_dark.svg";
+  }
 };
 
 toggle.addEventListener("click", function() {
