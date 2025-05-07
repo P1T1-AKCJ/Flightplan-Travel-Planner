@@ -4,7 +4,7 @@ Flightplan is an interactive front-end web application that allows users to crea
 
 ## Access 
 
-Users can access the website with the following URL: https://p1t1-akcj.github.io/ProjectOne/
+[Currently not working] Users can access the website with the following URL: https://p1t1-akcj.github.io/ProjectOne/
 
 ****
 
